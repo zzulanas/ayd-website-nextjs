@@ -3,22 +3,22 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome, getAllProjectsWithSlug } from '../lib/api'
+import { getAllPostsForHome, getAllProjectsByTag, getAllProjectsWithSlug } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 
-export default function Index({ preview, allProjects }) {
+export default function Residential({ preview, allProjects }) {
   const heroProject = allProjects[0]
-  const moreProjects = allProjects.slice(1)
+  console.log(allProjects)
+  // const morePosts = allPosts.slice(1)
   return (
     <>
       <Layout preview={preview}>
         <Head>
-          <title>AyD: Arquitectura y Diseño</title>
+          <title>Residential Projects</title>
         </Head>
         <Container>
-          <Intro />
-          {heroProject && (
+          {/* {heroProject && (
             <HeroPost
               title={heroProject.title}
               coverImage={heroProject.projectImagesCollection.items[0]}
@@ -26,8 +26,8 @@ export default function Index({ preview, allProjects }) {
               slug={heroProject.slug}
               excerpt={heroProject.tagLine}
             />
-          )}
-          {moreProjects.length > 0 && <MoreStories projects={moreProjects} pageName={"Other"}/>}
+          )} */}
+          {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Residential"} />}
         </Container>
       </Layout>
     </>
@@ -35,7 +35,7 @@ export default function Index({ preview, allProjects }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allProjects = (await getAllProjectsWithSlug()) ?? []
+  const allProjects = (await getAllProjectsByTag("categoryResidential")) ?? []
   return {
     props: { preview, allProjects },
   }
