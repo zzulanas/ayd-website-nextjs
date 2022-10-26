@@ -15,13 +15,10 @@ import ContentfulImage from '../../components/contentful-image'
 
 export default function Post({ project, moreProjects, preview }) {
   const router = useRouter()
-  console.log(project.projectImagesCollection.items[0].url)
 
   if (!router.isFallback && !project) {
     return <ErrorPage statusCode={404} />
   }
-
-  console.log(project)
 
   return (
     <Layout preview={preview}>
@@ -47,7 +44,7 @@ export default function Post({ project, moreProjects, preview }) {
             {project.projectImagesCollection.items.slice(1).map(
               item => (
                 <ContentfulImage
-                  width={2000}
+                  width={4000}
                   height={1000}
                   alt={`Cover Image for ${project.title}`}
                   className='shadow-small'
@@ -72,7 +69,7 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       preview,
       project: data?.project ?? null,
-      moreProjects: data?.moreeProjects ?? null,
+      moreProjects: data?.moreProjects ?? null,
     },
   }
 }
