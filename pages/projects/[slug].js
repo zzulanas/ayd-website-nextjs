@@ -56,9 +56,9 @@ export default function Post({ project, moreProjects, preview }) {
               )
             )}
             <SectionSeparator />
-            {moreProjects && moreProjects.length > 0 && (
+            {/* {moreProjects && moreProjects.length > 0 && (
               <MoreStories projects={moreProjects} />
-            )}
+            )} */}
           </>
         )}
       </Container>
