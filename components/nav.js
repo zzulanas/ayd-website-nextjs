@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Nav() {
   return (
-    <nav class="flex items-center justify-between flex-wrap bg-slate-200 p-6">
+    <nav class="flex items-center justify-between flex-wrap  p-6">
     <div class="flex items-center flex-shrink-0 mr-6">
     <Link href="/">
         <a className="font-semibold text-xl tracking-tight hover:underline">AyD</a>

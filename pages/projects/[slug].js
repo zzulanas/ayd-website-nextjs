@@ -57,7 +57,7 @@ export default function Post({ project, moreProjects, preview }) {
             )}
             <SectionSeparator />
             {moreProjects && moreProjects.length > 0 && (
-              <MoreStories posts={moreProjects} />
+              <MoreStories projects={moreProjects} />
             )}
           </>
         )}
