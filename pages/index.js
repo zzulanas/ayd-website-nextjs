@@ -3,11 +3,12 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome, getAllProjectsWithSlug } from '../lib/api'
+import { getAllPicturesForGallery, getAllPostsForHome, getAllProjectsWithSlug } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
+import Gallery from '../components/gallery'
 
-export default function Index({ preview, allProjects }) {
+export default function Index({ preview, allProjects, pictures }) {
   const heroProject = allProjects[0]
   const moreProjects = allProjects.slice(1)
   return (
@@ -18,7 +19,8 @@ export default function Index({ preview, allProjects }) {
         </Head>
         <Container>
           <Intro />
-          {heroProject && (
+          <Gallery pictures={pictures}/>
+          {/* {heroProject && (
             <HeroPost
               title={heroProject.title}
               coverImage={heroProject.projectImagesCollection.items[0]}
@@ -27,7 +29,7 @@ export default function Index({ preview, allProjects }) {
               excerpt={heroProject.tagLine}
             />
           )}
-          {moreProjects.length > 0 && <MoreStories projects={moreProjects} pageName={"Other"}/>}
+          {moreProjects.length > 0 && <MoreStories projects={moreProjects} pageName={"Other"}/>} */}
         </Container>
       </Layout>
     </>
@@ -36,7 +38,8 @@ export default function Index({ preview, allProjects }) {
 
 export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsWithSlug()) ?? []
+  const pictures = (await getAllPicturesForGallery()) ?? []
   return {
-    props: { preview, allProjects },
+    props: { preview, allProjects, pictures },
   }
 }
