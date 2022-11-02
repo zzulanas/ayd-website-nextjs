@@ -49,6 +49,7 @@ export default function Post({ project, moreProjects, preview }) {
                   alt={`Cover Image for ${project.title}`}
                   className='shadow-small'
                   src={item.url}
+                  key={item.url}
                 />
               )
             )}

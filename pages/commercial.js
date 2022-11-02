@@ -8,14 +8,12 @@ import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 
 export default function Residential({ preview, allProjects }) {
-  const heroProject = allProjects[0]
-  console.log(allProjects)
   // const morePosts = allPosts.slice(1)
   return (
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Residential Projects</title>
+          <title>Commercial Projects</title>
         </Head>
         <Container>
           {/* {heroProject && (
@@ -28,9 +26,9 @@ export default function Residential({ preview, allProjects }) {
             />
           )} */}
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Residential projects
+            Commercial projects
           </h2>
-          {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Residential"} />}
+          {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Commercial"} />}
           {allProjects.length == 0 && <h2 className='text-2xl'>No projects could be found</h2>}
         </Container>
       </Layout>
@@ -39,7 +37,7 @@ export default function Residential({ preview, allProjects }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allProjects = (await getAllProjectsByTag("categoryResidential")) ?? []
+  const allProjects = (await getAllProjectsByTag("categoryCommercial")) ?? []
   return {
     props: { preview, allProjects },
   }

@@ -15,7 +15,7 @@ export default function Residential({ preview, allProjects }) {
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Residential Projects</title>
+          <title>About AyD</title>
         </Head>
         <Container>
           {/* {heroProject && (
@@ -28,10 +28,9 @@ export default function Residential({ preview, allProjects }) {
             />
           )} */}
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Residential projects
+            About AyD
           </h2>
-          {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Residential"} />}
-          {allProjects.length == 0 && <h2 className='text-2xl'>No projects could be found</h2>}
+          <h2>UNDER CONSTRUCTION</h2>
         </Container>
       </Layout>
     </>

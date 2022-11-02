@@ -15,7 +15,7 @@ export default function Residential({ preview, allProjects }) {
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Residential Projects</title>
+          <title>Previous Work</title>
         </Head>
         <Container>
           {/* {heroProject && (
@@ -28,7 +28,7 @@ export default function Residential({ preview, allProjects }) {
             />
           )} */}
           <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Residential projects
+            Previous Work
           </h2>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Residential"} />}
           {allProjects.length == 0 && <h2 className='text-2xl'>No projects could be found</h2>}
@@ -39,7 +39,7 @@ export default function Residential({ preview, allProjects }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allProjects = (await getAllProjectsByTag("categoryResidential")) ?? []
+  const allProjects = (await getAllProjectsByTag("categoryPreviousWork")) ?? []
   return {
     props: { preview, allProjects },
   }
