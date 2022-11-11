@@ -17,7 +17,6 @@ const customMarkdownOptions = (content) => ({
 })
 
 export default function PostBody({ content, images }) {
-  console.log(content)
   const section1 = {content: content.json.content.slice(0,2), data: {}, nodeType: 'document'}
   const section2 = {content: content.json.content.slice(2,4), data: {}, nodeType: 'document'}
   const section3 = {content: content.json.content.slice(4), data: {}, nodeType: 'document'}

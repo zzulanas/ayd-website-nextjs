@@ -9,7 +9,6 @@ import { CMS_NAME } from '../lib/constants'
 
 export default function Residential({ preview, allProjects }) {
   const heroProject = allProjects[0]
-  console.log(allProjects)
   // const morePosts = allPosts.slice(1)
   return (
     <>
