@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Container from "./container";
 
 function Nav() {
   return (
+      <Container>
     <nav className="flex items-center justify-between flex-wrap  p-6">
     <div className="flex items-center flex-shrink-0 mr-6">
     <Link href="/">
@@ -47,6 +49,7 @@ function Nav() {
         </div>
     </div>
     </nav>
+    </Container>
   );
 }
 

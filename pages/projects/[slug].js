@@ -12,10 +12,12 @@ import { getAllPostsWithSlug, getAllProjectsWithSlug, getPostAndMorePosts, getPr
 import PostTitle from '../../components/post-title'
 import { CMS_NAME } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
+import DateComponent from '../../components/date'
 
 export default function Post({ project, moreProjects, preview }) {
   const router = useRouter()
 
+  const coverImage = project.projectImagesCollection.items[0]
   if (!router.isFallback && !project) {
     return <ErrorPage statusCode={404} />
   }
@@ -30,33 +32,60 @@ export default function Post({ project, moreProjects, preview }) {
             <article>
               <Head>
                 <title>
-                  {project.title} | Next.js Blog Example with {CMS_NAME}
+                  {project.title} | AyD
                 </title>
                 <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
               </Head>
-              <PostHeader
+              {/* <PostHeader
                 title={project.title}
                 coverImage={project.projectImagesCollection.items[0]}
                 date={project.dateCreated}
-              />
-              <PostBody content={project.content} />
-            </article>
-            {project.projectImagesCollection.items.slice(1).map(
-              item => (
-                <ContentfulImage
-                  width={4000}
+              /> */}
+
+              <div className="grid grid-cols-2 gap-2 mx-auto px-5 container mb-20">
+                <div>
+                  <ContentfulImage
+                  width={500}
                   height={1000}
                   alt={`Cover Image for ${project.title}`}
                   className='shadow-small'
-                  src={item.url}
-                  key={item.url}
+                  src={coverImage.url}
+                  key={coverImage.url}
                 />
-              )
-            )}
+                </div>
+                <div className='grid grid-cols-1'>
+
+                  <div className='place-self-end'>
+                    <ContentfulImage
+                      width={800}
+                      height={700}
+                      alt={`Cover Image for ${project.title}`}
+                      
+                      src={coverImage.url}
+                      key={coverImage.url}
+                    />
+                  </div>
+    
+                  <div className='place-self-center text-right'>
+                    <PostTitle >{project.title}</PostTitle>
+                    <h2 className='text-1xl'><DateComponent dateString={project.dateCreated}/></h2>
+                    <h2 className='text-2xl'>{project.projectLocation}</h2>
+                    <h2 className='text-2xl'>{project.projectTagline}</h2>
+                  </div>
+
+                  <div>
+                  </div>
+                  
+                </div>
+              </div>
+              <SectionSeparator />
+              <PostBody content={project.content} images={project.projectImagesCollection.items}/>
+            </article>
+
             <SectionSeparator />
-            {/* {moreProjects && moreProjects.length > 0 && (
+            {moreProjects && moreProjects.length > 0 && (
               <MoreStories projects={moreProjects} />
-            )} */}
+            )}
           </>
         )}
       </Container>

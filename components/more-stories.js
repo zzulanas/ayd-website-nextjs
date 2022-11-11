@@ -3,6 +3,7 @@ import PostPreview from '../components/post-preview'
 export default function MoreStories({ pageName, projects }) {
   return (
     <section>
+    <h1 className='text-6xl font-semibold'>More Projects</h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
         {projects.map((project) => (
           <PostPreview
