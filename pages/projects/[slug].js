@@ -17,7 +17,6 @@ import DateComponent from '../../components/date'
 export default function Post({ project, moreProjects, preview }) {
   const router = useRouter()
 
-  const coverImage = project.projectImagesCollection.items[0]
   if (!router.isFallback && !project) {
     return <ErrorPage statusCode={404} />
   }
@@ -49,8 +48,8 @@ export default function Post({ project, moreProjects, preview }) {
                   height={1000}
                   alt={`Cover Image for ${project.title}`}
                   className='shadow-small'
-                  src={coverImage.url}
-                  key={coverImage.url}
+                  src={project.projectImagesCollection.items[0].url}
+                  key={project.projectImagesCollection.items[0].url}
                 />
                 </div>
                 <div className='grid grid-cols-1'>
@@ -61,8 +60,8 @@ export default function Post({ project, moreProjects, preview }) {
                       height={700}
                       alt={`Cover Image for ${project.title}`}
                       
-                      src={coverImage.url}
-                      key={coverImage.url}
+                      src={project.projectImagesCollection.items[0].url}
+                      key={project.projectImagesCollection.items[0].url}
                     />
                   </div>
     
