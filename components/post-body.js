@@ -32,7 +32,7 @@ export default function PostBody({ content, images }) {
                       width={800}
                       height={700}
                       alt={`C`}
-                      
+                      lightboxEnabled={true}
                       src={images[2].url}
                       key={images[2].url}
                     />}
@@ -44,7 +44,7 @@ export default function PostBody({ content, images }) {
                       width={800}
                       height={700}
                       alt={`C`}
-                      
+                      lightboxEnabled={true}
                       src={images[3].url}
                       key={images[3].url}
                     /> }
@@ -54,7 +54,7 @@ export default function PostBody({ content, images }) {
                       width={800}
                       height={700}
                       alt={`C`}
-                      
+                      lightboxEnabled={true}
                       src={images[0].url}
                       key={images[0].url}
                     />}
@@ -66,7 +66,7 @@ export default function PostBody({ content, images }) {
                       width={800}
                       height={700}
                       alt={`C`}
-                      
+                      lightboxEnabled={true}
                       src={images[1].url}
                       key={images[1].url}
                     />}
