@@ -1,15 +1,26 @@
 import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { BLOCKS } from '@contentful/rich-text-types'
+import markdownStyles from "../components/markdown-styles.module.css"
 import Layout from '../components/layout'
-import { getAllPostsForHome, getAllProjectsByTag, getAllProjectsWithSlug } from '../lib/api'
+import { getAboutDescription, getAllTeamMembers } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
+import Avatar from '../components/avatar'
+import SectionSeparator from '../components/section-separator'
 
-export default function Residential({ preview, allProjects }) {
-  const heroProject = allProjects[0]
-  // const morePosts = allPosts.slice(1)
+const customMarkdownOptions = (content) => ({
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => (
+      <RichTextAsset
+        id={node.data.target.sys.id}
+        assets={content.links.assets.block}
+      />
+    ),
+  },
+})
+
+export default function About({ preview, teamMembers, description }) {
   return (
     <>
       <Layout preview={preview}>
@@ -17,19 +28,34 @@ export default function Residential({ preview, allProjects }) {
           <title>About AyD</title>
         </Head>
         <Container>
-          {/* {heroProject && (
-            <HeroPost
-              title={heroProject.title}
-              coverImage={heroProject.projectImagesCollection.items[0]}
-              date={heroProject.dateCreated}
-              slug={heroProject.slug}
-              excerpt={heroProject.tagLine}
-            />
-          )} */}
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            About AyD
-          </h2>
-          <h2>UNDER CONSTRUCTION</h2>
+        <div className="grid grid-cols-1">
+          <div>
+            <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+              About AyD
+            </h2>
+          </div>
+          <div className={markdownStyles['markdown']}>
+            {documentToReactComponents(
+              description.json,
+              customMarkdownOptions(description.json)
+            )}
+          </div>
+
+        </div>
+        <SectionSeparator></SectionSeparator>
+          <h2 className='font-bold text-6xl text-center py-10'>Meet the team</h2>
+          <div className='grid lg:grid-cols-2 md:grid-cols-1"'>
+            {teamMembers.map((member)=> {
+              return <Avatar
+                picture={member.memberPicture}
+                name={member.memberName}
+                role={member.memberRole}
+                key={member.memberName}
+                className="m-10"
+              />
+            })}
+          </div>
+          
         </Container>
       </Layout>
     </>
@@ -37,8 +63,10 @@ export default function Residential({ preview, allProjects }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allProjects = (await getAllProjectsByTag("categoryResidential")) ?? []
+  const teamMembers = (await getAllTeamMembers()) ?? []
+  const description = (await getAboutDescription()) ?? []
+  console.log(description.json)
   return {
-    props: { preview, allProjects },
+    props: { preview, teamMembers, description },
   }
 }
