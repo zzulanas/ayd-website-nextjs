@@ -68,5 +68,6 @@ export async function getStaticProps({ preview = false }) {
   console.log(description.json)
   return {
     props: { preview, teamMembers, description },
+    revalidate: 10,
   }
 }
