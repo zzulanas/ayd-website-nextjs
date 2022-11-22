@@ -25,10 +25,7 @@ export default function Residential({ preview, allProjects }) {
               excerpt={heroProject.tagLine}
             />
           )} */}
-          <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
-            Commercial projects
-          </h2>
-          {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Commercial"} />}
+          {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Commercial Projects"} />}
           {allProjects.length == 0 && <h2 className='text-2xl'>No projects could be found</h2>}
         </Container>
       </Layout>

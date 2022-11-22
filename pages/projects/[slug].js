@@ -48,8 +48,9 @@ export default function Post({ project, moreProjects, preview }) {
                   height={1000}
                   alt={`Cover Image for ${project.title}`}
                   className='shadow-small'
-                  src={project.projectImagesCollection.items[0].url}
-                  key={project.projectImagesCollection.items[0].url}
+                  objectFit="cover"
+                  src={project.bannerImage.url}
+                  key={project.bannerImage.url}
                 />
                 </div>
                 <div className='grid grid-cols-1'>
@@ -67,9 +68,12 @@ export default function Post({ project, moreProjects, preview }) {
     
                   <div className='place-self-center text-right'>
                     <PostTitle >{project.title}</PostTitle>
-                    <h2 className='text-1xl'><DateComponent dateString={project.dateCreated}/></h2>
-                    <h2 className='text-2xl'>{project.projectLocation}</h2>
-                    <h2 className='text-2xl'>{project.projectTagline}</h2>
+                    <div className='flex flex-row justify-between'>
+                      <h2 className='text-2xl font-light text-gray-400'>{project.projectLocation}</h2>
+                      <h2 className='text-2xl font-light text-gray-400'><DateComponent dateString={project.dateCreated}/></h2>
+                    </div>
+                    <br/>
+                    <h2 className='text-lg text-left font-light'>{project.projectTagline}</h2>
                   </div>
 
                   <div>
@@ -83,7 +87,7 @@ export default function Post({ project, moreProjects, preview }) {
 
             <SectionSeparator />
             {moreProjects && moreProjects.length > 0 && (
-              <MoreStories projects={moreProjects} />
+              <MoreStories projects={moreProjects} pageName={"More Projects"}/>
             )}
           </>
         )}

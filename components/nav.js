@@ -6,10 +6,10 @@ function Nav() {
     const [navOpen, setOpen] = useState(false);
     return (
         <Container>
-        <nav className="flex items-center justify-between flex-wrap  p-6">
+        <nav className="flex items-center justify-between flex-wrap py-6">
         <div className="flex items-center flex-shrink-0 mr-6">
         <Link href="/">
-            <a className="font-semibold text-xl tracking-tight hover:underline">AyD</a>
+            <a className=" text-5xl tracking-tight hover:underline">AyD</a>
         </Link>
         </div>
         <div className="block lg:hidden">

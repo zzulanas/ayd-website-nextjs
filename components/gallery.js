@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Gallery({ pictures }){
     const layoutSizeA = "relative overflow-hidden object-cover"
-    const layoutSize2ARow = "relative overflow-hidden col-span-2 sm:col-span-1"
+    const layoutSize2ARow = "relative overflow-hidden col-span-2 md:col-span-2 lg:col-span-2 sm:col-span-1"
     const layoutSize2ACol = "relative overflow-hidden row-span-2 sm:row-span-1"
 
     const textStyle = "opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-4xl text-white font-semibold"
@@ -17,7 +17,7 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[0].url}
+                        src={pictures[0].bannerImage.url}
                     />
                     <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[0].title}</div>
@@ -30,7 +30,7 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[1].url}
+                        src={pictures[1].bannerImage.url}
                     />
                     <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[1].title}</div>
@@ -43,7 +43,7 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[2].url}
+                        src={pictures[2].bannerImage.url}
                     />
                     <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[2].title}</div>
@@ -56,7 +56,7 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[3].url}
+                        src={pictures[3].bannerImage.url}
                     />
                     <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[3].title}</div>
@@ -69,9 +69,10 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[4].url}
+                        src={pictures[4].bannerImage.url}
+                        width={800}
+                        height={400}
                     />
-                    <img src="https://via.placeholder.com/800x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[4].title}</div>
                 </a>
             </Link>
@@ -82,9 +83,10 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[5].url}
+                        width={400}
+                        height={800}
+                        src={pictures[5].bannerImage.url}
                     />
-                    <img src="https://via.placeholder.com/400x800" className="display: none;"/>
                     <div className={textStyle}>{pictures[5].title}</div>
                 </a>
             </Link>
@@ -95,10 +97,11 @@ export default function Gallery({ pictures }){
                     <ContentfulImage
                         layout="fill"
                         objectFit="cover"
-                        src={pictures[6].url}
+                        src={pictures[6].bannerImage.url}
+                        width={400}
+                        height={800}
                     />
                     <div className={textStyle}>{pictures[6].title}</div>
-                    <img src="https://via.placeholder.com/400x800" className="display: none;"/>
                 </a>
             </Link>
         </div> 
@@ -106,12 +109,11 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[7].slug}`} key={pictures[7].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
-                        objectFit="cover"
-                        src={pictures[7].url}
+                        src={pictures[7].bannerImage.url}
+                        width={400}
+                        height={800}
                     />
                     <div className={textStyle}>{pictures[7].title}</div>
-                    <img src="https://via.placeholder.com/400x800" className="display: none;"/>
                 </a>
             </Link>
         </div> 
