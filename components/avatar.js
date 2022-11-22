@@ -11,8 +11,8 @@ export default function Avatar({ name, picture, role }) {
           className="shadow rounded-full h-auto align-middle border-none"
           alt={name}
         />
-        <div className="text-lg font-bold text-center">{name}</div>
-        <div className="text-base text-center">{role}</div>
+        <div className="text-lg font-medium text-center">{name}</div>
+        <div className="text-base font-thin text-center">{role}</div>
       </div>
       
     </div>

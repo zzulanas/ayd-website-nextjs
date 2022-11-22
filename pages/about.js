@@ -30,7 +30,7 @@ export default function About({ preview, teamMembers, description }) {
         <Container>
         <div className="grid grid-cols-1">
           <div>
-            <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
+            <h2 className="mb-8 text-6xl md:text-7xl font-light tracking-tighter leading-tight">
               About AyD
             </h2>
           </div>
@@ -43,7 +43,7 @@ export default function About({ preview, teamMembers, description }) {
 
         </div>
         <SectionSeparator></SectionSeparator>
-          <h2 className='font-bold text-6xl text-center py-10'>Meet the team</h2>
+          <h2 className='font-light text-6xl text-center py-10'>Meet the team</h2>
           <div className='grid lg:grid-cols-2 md:grid-cols-1"'>
             {teamMembers.map((member)=> {
               return <Avatar
