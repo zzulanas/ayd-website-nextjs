@@ -15,11 +15,11 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[0].slug}`} key={pictures[0].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         src={pictures[0].bannerImage.url}
+                        width={400}
+                        height={400}
                     />
-                    <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[0].title}</div>
                 </a>
             </Link>
@@ -28,11 +28,11 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[1].slug}`} key={pictures[1].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         src={pictures[1].bannerImage.url}
+                        width={400}
+                        height={400}
                     />
-                    <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[1].title}</div>
                 </a>
             </Link>
@@ -41,11 +41,11 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[2].slug}`} key={pictures[2].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         src={pictures[2].bannerImage.url}
+                        width={400}
+                        height={400}
                     />
-                    <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[2].title}</div>
                 </a>
             </Link>
@@ -54,11 +54,11 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[3].slug}`} key={pictures[3].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         src={pictures[3].bannerImage.url}
+                        width={400}
+                        height={400}
                     />
-                    <img src="https://via.placeholder.com/400x400" className="display: none;"/>
                     <div className={textStyle}>{pictures[3].title}</div>
                 </a>
             </Link>
@@ -67,7 +67,6 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[4].slug}`} key={pictures[4].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         src={pictures[4].bannerImage.url}
                         width={800}
@@ -81,7 +80,6 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[5].slug}`} key={pictures[5].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         width={400}
                         height={800}
@@ -95,7 +93,6 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[6].slug}`} key={pictures[6].title}>
                 <a>
                     <ContentfulImage
-                        layout="fill"
                         objectFit="cover"
                         src={pictures[6].bannerImage.url}
                         width={400}
@@ -109,6 +106,7 @@ export default function Gallery({ pictures }){
             <Link href={`/projects/${pictures[7].slug}`} key={pictures[7].title}>
                 <a>
                     <ContentfulImage
+                        objectFit="cover"
                         src={pictures[7].bannerImage.url}
                         width={400}
                         height={800}
