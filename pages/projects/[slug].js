@@ -16,7 +16,12 @@ import DateComponent from '../../components/date'
 
 export default function Post({ project, moreProjects, preview }) {
   const router = useRouter()
-  console.log(project)
+  let fiveXThousandImage = project.projectImagesCollection.items[0]
+  project.projectImagesCollection.items.forEach(image => {
+    if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
+      fiveXThousandImage = image
+    }
+  })
 
   if (!router.isFallback && !project) {
     return <ErrorPage statusCode={404} />
@@ -50,8 +55,8 @@ export default function Post({ project, moreProjects, preview }) {
                   alt={`Cover Image for ${project.title}`}
                   className='shadow-small'
                   objectFit="cover"
-                  src={project.bannerImage.url}
-                  key={project.bannerImage.url}
+                  src={fiveXThousandImage.url}
+                  key={fiveXThousandImage.url}
                 />
                 </div>
                 <div className='grid grid-cols-1'>
@@ -99,7 +104,6 @@ export default function Post({ project, moreProjects, preview }) {
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getProjectAndMoreProjects(params.slug)
-  console.log(data?.project?.projectImagesCollection)
   return {
     props: {
       preview,
