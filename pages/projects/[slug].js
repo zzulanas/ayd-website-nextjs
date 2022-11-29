@@ -67,8 +67,8 @@ export default function Post({ project, moreProjects, preview }) {
                       height={700}
                       alt={`Cover Image for ${project.title}`}
                       
-                      src={project.projectImagesCollection.items[0].url}
-                      key={project.projectImagesCollection.items[0].url}
+                      src={project.bannerImage}
+                      key={project.bannerImage}
                     />
                   </div>
     
