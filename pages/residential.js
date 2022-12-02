@@ -38,6 +38,5 @@ export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsByTag("categoryResidential")) ?? []
   return {
     props: { preview, allProjects },
-    revalidate: 10,
   }
 }
