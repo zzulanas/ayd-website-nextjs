@@ -111,6 +111,7 @@ export async function getStaticProps({ params, preview = false }) {
       moreProjects: data?.moreProjects ?? null,
       fiveXThousandImage: fiveXThousandImage ?? null,
     },
+    revalidate: 30,
   }
 }
 

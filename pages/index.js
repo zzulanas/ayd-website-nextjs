@@ -41,5 +41,6 @@ export async function getStaticProps({ preview = false }) {
   const pictures = (await getAllPicturesForGallery()) ?? null
   return {
     props: { preview, allProjects, pictures },
+    revalidate: 30,
   }
 }

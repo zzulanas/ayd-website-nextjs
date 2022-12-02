@@ -38,5 +38,6 @@ export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsByTag("categoryPreviousWork")) ?? []
   return {
     props: { preview, allProjects },
+    revalidate: 30,
   }
 }
