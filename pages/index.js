@@ -39,7 +39,6 @@ export default function Index({ preview, allProjects, pictures }) {
 export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsWithSlug()) ?? null
   const pictures = (await getAllPicturesForGallery()) ?? null
-  console.log(pictures)
   return {
     props: { preview, allProjects, pictures },
   }

@@ -8,20 +8,14 @@ import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
-import { getAllPostsWithSlug, getAllProjectsWithSlug, getPostAndMorePosts, getProjectAndMoreProjects, extract500x1000Image } from '../../lib/api'
+import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import { CMS_NAME } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
 import DateComponent from '../../components/date'
 
-export default function Post({ project, moreProjects, preview }) {
+export default function Post({ project, moreProjects, preview, fiveXThousandImage }) {
   const router = useRouter()
-  let fiveXThousandImage = project.projectImagesCollection.items[0]
-  project.projectImagesCollection.items.forEach(image => {
-    if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
-      fiveXThousandImage = image
-    }
-  })
 
   if (!router.isFallback && !project) {
     return <ErrorPage statusCode={404} />
@@ -64,11 +58,11 @@ export default function Post({ project, moreProjects, preview }) {
                   <div className='place-self-end'>
                     <ContentfulImage
                       width={800}
-                      height={700}
+                      height={800}
                       alt={`Cover Image for ${project.title}`}
                       
-                      src={project.bannerImage}
-                      key={project.bannerImage}
+                      src={project.bannerImage.url}
+                      key={project.bannerImage.url}
                     />
                   </div>
     
@@ -104,11 +98,18 @@ export default function Post({ project, moreProjects, preview }) {
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getProjectAndMoreProjects(params.slug)
+  let fiveXThousandImage = data.project.projectImagesCollection.items[0]
+  data.project.projectImagesCollection.items.forEach(image => {
+  if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
+    fiveXThousandImage = image
+  }
+})
   return {
     props: {
       preview,
       project: data?.project ?? null,
       moreProjects: data?.moreProjects ?? null,
+      fiveXThousandImage: fiveXThousandImage ?? null,
     },
   }
 }
