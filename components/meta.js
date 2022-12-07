@@ -36,7 +36,7 @@ export default function Meta() {
         name="description"
         content={`AyD | Arquitectura y Diseño`}
       />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+      <meta property="og:image" content='public/favicon/meta.png' />
     </Head>
   )
 }

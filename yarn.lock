@@ -55,12 +55,25 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
+"@resvg/resvg-wasm@2.0.0-alpha.4":
+  "integrity" "sha512-pWIG9a/x1ky8gXKRhPH1OPKpHFoMN1ISLbJ+O+gPXQHIAKhNd5I28RlWf7q576hAOQA9JZTlo3p/M2uyLzJmmw=="
+  "resolved" "https://registry.npmjs.org/@resvg/resvg-wasm/-/resvg-wasm-2.0.0-alpha.4.tgz"
+  "version" "2.0.0-alpha.4"
+
 "@samverschueren/stream-to-observable@^0.3.0":
   "integrity" "sha512-c/qwwcHyafOQuVQJj0IlBjf5yYgBI7YPJ77k4fOJYesb41jio65eaJODRUmfYKhTOFBrIZ66kgvGPlNbjuoRdQ=="
   "resolved" "https://registry.npmjs.org/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.1.tgz"
   "version" "0.3.1"
   dependencies:
     "any-observable" "^0.3.0"
+
+"@shuding/opentype.js@1.4.0-beta.0":
+  "integrity" "sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA=="
+  "resolved" "https://registry.npmjs.org/@shuding/opentype.js/-/opentype.js-1.4.0-beta.0.tgz"
+  "version" "1.4.0-beta.0"
+  dependencies:
+    "fflate" "^0.7.3"
+    "string.prototype.codepointat" "^0.2.1"
 
 "@swc/helpers@0.4.11":
   "integrity" "sha512-rEUrBSGIoSFuYxwBYtlUFMlE2CwGhmW+w9355/5oduSw8e5h2+Tj4UrAGNNgP9915++wj5vkQo0UuOBqOAq4nw=="
@@ -73,6 +86,25 @@
   "integrity" "sha512-MhCUjojzDhVLnZnxwPwa+rETFRDQ0ffjxYdrqOP6TBO2O0/Z64PV5tNeYApo4bc4y4frbWOrRwv/eEkXlI13Rw=="
   "resolved" "https://registry.npmjs.org/@types/json-patch/-/json-patch-0.0.30.tgz"
   "version" "0.0.30"
+
+"@types/yoga-layout@1.9.2":
+  "integrity" "sha512-S9q47ByT2pPvD65IvrWp7qppVMpk9WGMbVq9wbWZOHg6tnXSD4vyhao6nOSBwwfDdV2p3Kx9evA9vI+XWTfDvw=="
+  "resolved" "https://registry.npmjs.org/@types/yoga-layout/-/yoga-layout-1.9.2.tgz"
+  "version" "1.9.2"
+
+"@vercel/edge@^0.1.2":
+  "integrity" "sha512-NmoJ4JvF2/LxU8e8fRJcxaMrO9A8a2WmW6CO9GEomlDltlREyQTUWMk13BuCDDpXUPcSBDrZ2TJIoWiFQEI4sg=="
+  "resolved" "https://registry.npmjs.org/@vercel/edge/-/edge-0.1.2.tgz"
+  "version" "0.1.2"
+
+"@vercel/og@^0.0.21":
+  "integrity" "sha512-WgMahG5c8UM7xtn/mT+ljUpDMSDnSlu8AXL52JtTwxb1odrd0GWqZg2N1X38wulPj+sCccNpDdFmmAuw0GLc+Q=="
+  "resolved" "https://registry.npmjs.org/@vercel/og/-/og-0.0.21.tgz"
+  "version" "0.0.21"
+  dependencies:
+    "@resvg/resvg-wasm" "2.0.0-alpha.4"
+    "satori" "0.0.44"
+    "yoga-wasm-web" "0.1.2"
 
 "acorn-node@^1.8.2":
   "integrity" "sha512-8mt+fslDufLYntIoPAaIMUe/lrbrehIiwmR3t2k9LljIzoigEPF27eLk2hy8zSGzmR/ogr7zbRKINMo1u0yh5A=="
@@ -243,6 +275,11 @@
   "integrity" "sha512-DLIsRzJVBQu72meAKPkWQOLcujdXT32hwdfnkI1frSiSRMK1MofjKHf+MEx0SB6fjEFXL8fBDv1dKymBlOp4Qw=="
   "resolved" "https://registry.npmjs.org/camelcase/-/camelcase-2.1.1.tgz"
   "version" "2.1.1"
+
+"camelize@^1.0.0":
+  "integrity" "sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ=="
+  "resolved" "https://registry.npmjs.org/camelize/-/camelize-1.0.1.tgz"
+  "version" "1.0.1"
 
 "caniuse-lite@^1.0.30001297", "caniuse-lite@^1.0.30001400", "caniuse-lite@^1.0.30001406":
   "integrity" "sha512-09iwWGOlifvE1XuHokFMP7eR38a0JnajoyL3/i87c8ZjRWRrdKo1fqjNfugfBD0UDBIOz0U+jtNhJ0EPm1VleQ=="
@@ -416,6 +453,30 @@
     "p-throttle" "^4.1.1"
     "qs" "^6.9.4"
 
+"css-background-parser@^0.1.0":
+  "integrity" "sha512-2EZLisiZQ+7m4wwur/qiYJRniHX4K5Tc9w93MT3AS0WS1u5kaZ4FKXlOTBhOjc+CgEgPiGY+fX1yWD8UwpEqUA=="
+  "resolved" "https://registry.npmjs.org/css-background-parser/-/css-background-parser-0.1.0.tgz"
+  "version" "0.1.0"
+
+"css-box-shadow@1.0.0-3":
+  "integrity" "sha512-9jaqR6e7Ohds+aWwmhe6wILJ99xYQbfmK9QQB9CcMjDbTxPZjwEmUQpU91OG05Xgm8BahT5fW+svbsQGjS/zPg=="
+  "resolved" "https://registry.npmjs.org/css-box-shadow/-/css-box-shadow-1.0.0-3.tgz"
+  "version" "1.0.0-3"
+
+"css-color-keywords@^1.0.0":
+  "integrity" "sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg=="
+  "resolved" "https://registry.npmjs.org/css-color-keywords/-/css-color-keywords-1.0.0.tgz"
+  "version" "1.0.0"
+
+"css-to-react-native@^3.0.0":
+  "integrity" "sha512-Ro1yETZA813eoyUp2GDBhG2j+YggidUmzO1/v9eYBKR2EHVEniE2MI/NqpTQ954BMpTPZFsGNPm46qFB9dpaPQ=="
+  "resolved" "https://registry.npmjs.org/css-to-react-native/-/css-to-react-native-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "camelize" "^1.0.0"
+    "css-color-keywords" "^1.0.0"
+    "postcss-value-parser" "^4.0.2"
+
 "cssesc@^3.0.0":
   "integrity" "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg=="
   "resolved" "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz"
@@ -497,6 +558,11 @@
   "resolved" "https://registry.npmjs.org/elegant-spinner/-/elegant-spinner-1.0.1.tgz"
   "version" "1.0.1"
 
+"emoji-regex@^10.2.1":
+  "integrity" "sha512-97g6QgOk8zlDRdgq1WxwgTMgEWGVAQvB5Fdpgc1MkNy56la5SKP9GsMXKDOdqwn90/41a8yPwIGk1Y6WVbeMQA=="
+  "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.2.1.tgz"
+  "version" "10.2.1"
+
 "emoji-regex@^8.0.0":
   "integrity" "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A=="
   "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz"
@@ -558,6 +624,11 @@
   "version" "1.13.0"
   dependencies:
     "reusify" "^1.0.4"
+
+"fflate@^0.7.3":
+  "integrity" "sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw=="
+  "resolved" "https://registry.npmjs.org/fflate/-/fflate-0.7.4.tgz"
+  "version" "0.7.4"
 
 "figures@^1.7.0":
   "integrity" "sha512-UxKlfCRuCBxSXU4C6t9scbDyWZ4VlaFFdojKtzJuSkuOBQ5CNFum+zZXFwHjo+CxBC1t6zlYPgHIgFjL8ggoEQ=="
@@ -1186,7 +1257,7 @@
     "cssesc" "^3.0.0"
     "util-deprecate" "^1.0.2"
 
-"postcss-value-parser@^4.0.0", "postcss-value-parser@^4.2.0":
+"postcss-value-parser@^4.0.0", "postcss-value-parser@^4.0.2", "postcss-value-parser@^4.2.0":
   "integrity" "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
   "resolved" "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
   "version" "4.2.0"
@@ -1352,6 +1423,19 @@
   dependencies:
     "tslib" "^1.9.0"
 
+"satori@0.0.44":
+  "integrity" "sha512-WKUxXC2qeyno6J3ucwwLozPL6j1HXOZiN5wIUf7iqAhlx1RUC/6ePIKHi7iPc3Cy6DYuZcJriZXxXkSdo2FQHg=="
+  "resolved" "https://registry.npmjs.org/satori/-/satori-0.0.44.tgz"
+  "version" "0.0.44"
+  dependencies:
+    "@shuding/opentype.js" "1.4.0-beta.0"
+    "css-background-parser" "^0.1.0"
+    "css-box-shadow" "1.0.0-3"
+    "css-to-react-native" "^3.0.0"
+    "emoji-regex" "^10.2.1"
+    "postcss-value-parser" "^4.2.0"
+    "yoga-layout-prebuilt" "^1.10.0"
+
 "scheduler@^0.20.2":
   "integrity" "sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ=="
   "resolved" "https://registry.npmjs.org/scheduler/-/scheduler-0.20.2.tgz"
@@ -1444,6 +1528,11 @@
 "string.fromcodepoint@^0.2.1":
   "integrity" "sha512-n69H31OnxSGSZyZbgBlvYIXlrMhJQ0dQAX1js1QDhpaUH6zmU3QYlj07bCwCNlPOu3oRXIubGPl2gDGnHsiCqg=="
   "resolved" "https://registry.npmjs.org/string.fromcodepoint/-/string.fromcodepoint-0.2.1.tgz"
+  "version" "0.2.1"
+
+"string.prototype.codepointat@^0.2.1":
+  "integrity" "sha512-2cBVCj6I4IOvEnjgO/hWqXjqBGsY+zwPmHl12Srk9IXSZ56Jwwmy+66XO5Iut/oQVR7t5ihYdLB0GMa4alEUcg=="
+  "resolved" "https://registry.npmjs.org/string.prototype.codepointat/-/string.prototype.codepointat-0.2.1.tgz"
   "version" "0.2.1"
 
 "strip-ansi@^3.0.0", "strip-ansi@^3.0.1":
@@ -1675,3 +1764,15 @@
   "integrity" "sha512-LkZ5FcHaWy3S8MN5ART84gkRAE2w0PfNzGKPR3zM6uhOJSFCGO2+TgLyHkhx3KmR/3ZbTbA0ko3HWvs5aU537A=="
   "resolved" "https://registry.npmjs.org/yet-another-react-lightbox/-/yet-another-react-lightbox-2.2.2.tgz"
   "version" "2.2.2"
+
+"yoga-layout-prebuilt@^1.10.0":
+  "integrity" "sha512-YnOmtSbv4MTf7RGJMK0FvZ+KD8OEe/J5BNnR0GHhD8J/XcG/Qvxgszm0Un6FTHWW4uHlTgP0IztiXQnGyIR45g=="
+  "resolved" "https://registry.npmjs.org/yoga-layout-prebuilt/-/yoga-layout-prebuilt-1.10.0.tgz"
+  "version" "1.10.0"
+  dependencies:
+    "@types/yoga-layout" "1.9.2"
+
+"yoga-wasm-web@0.1.2":
+  "integrity" "sha512-8SkgawHcA0RUbMrnhxbaQkZDBi8rMed8pQHixkFF9w32zGhAwZ9/cOHWlpYfr6RCx42Yp3siV45/jPEkJxsk6w=="
+  "resolved" "https://registry.npmjs.org/yoga-wasm-web/-/yoga-wasm-web-0.1.2.tgz"
+  "version" "0.1.2"
