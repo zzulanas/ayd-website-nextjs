@@ -8,9 +8,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Gallery from '../components/gallery'
 
-export default function Index({ preview, allProjects, pictures }) {
-  const heroProject = allProjects[0]
-  const moreProjects = allProjects.slice(1)
+export default function Index({ preview, pictures }) {
   return (
     <>
       <Layout preview={preview}>
@@ -37,11 +35,19 @@ export default function Index({ preview, allProjects, pictures }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allProjects = (await getAllProjectsWithSlug()) ?? null
-  const pictures = (await getAllPicturesForGallery()) ?? null
-  console.log(pictures[0])
+  const pictures = await getAllPicturesForGallery()
+  pictures.sort((picA, picB) => {
+    if(parseInt(picA.homesort) < parseInt(picB.homesort) ){
+      return -1
+    } 
+    if(parseInt(picA.homesort) > parseInt(picB.homesort) ){
+      return 1
+    }
+    return 0;
+  })
+  console.log(pictures)
   return {
-    props: { preview, allProjects, pictures },
+    props: { preview, pictures },
     revalidate: 30,
   }
 }
