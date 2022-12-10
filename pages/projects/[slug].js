@@ -99,9 +99,10 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
 export async function getStaticProps({ params, preview = false }) {
   const data = await getProjectAndMoreProjects(params.slug)
   let fiveXThousandImage = data.project.projectImagesCollection.items[0]
-  data.project.projectImagesCollection.items.forEach(image => {
+  data.project.projectImagesCollection.items.forEach((image, idx) => {
   if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
     fiveXThousandImage = image
+    data.project.projectImagesCollection.items.splice(idx, 1)
   }
 })
   return {

@@ -45,7 +45,6 @@ export async function getStaticProps({ preview = false }) {
     }
     return 0;
   })
-  console.log(pictures)
   return {
     props: { preview, pictures },
     revalidate: 30,
