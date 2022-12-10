@@ -22,7 +22,7 @@ export default function PostBody({ content, images }) {
   const section3 = {content: content.json.content.slice(4), data: {}, nodeType: 'document'}
   return (
     <Container className="max-w-2xl">
-    <div className='grid grid-cols-2 gap-10'>
+    <div className='grid md:grid-cols-2 sm:grid-cols-1 gap-10'>
       <div className={markdownStyles['markdown']}>
           {documentToReactComponents(
             section1,

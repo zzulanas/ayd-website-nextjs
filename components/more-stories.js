@@ -9,7 +9,7 @@ export default function MoreStories({ pageName, projects }) {
           <PostPreview
             key={project.slug}
             title={project.title}
-            coverImage={project.projectImagesCollection.items[0]}
+            coverImage={project.bannerImage}
             date={project.dateCreated}
             slug={project.slug}
             excerpt={project.projectTagLine}

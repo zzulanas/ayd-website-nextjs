@@ -17,6 +17,7 @@ const ContentfulImage = (props) => {
           <>
           <Image 
           loader={contentfulLoader} 
+          className={props.lightboxEnabled ? "cursor-pointer" : ""}
           {...props}
           onClick={() => setOpen(true)} />
           

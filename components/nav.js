@@ -50,7 +50,7 @@ function Nav() {
             </div>
         </div>}
 
-        <div className="sm:hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div className="hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div className="text-sm lg:flex-grow">
 
             </div>

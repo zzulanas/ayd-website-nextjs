@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Gallery({ pictures }){
     const layoutSizeA = "relative overflow-hidden object-cover"
-    const layoutSize2ARow = "relative overflow-hidden col-span-2 md:col-span-2 lg:col-span-2 sm:col-span-1"
-    const layoutSize2ACol = "relative overflow-hidden row-span-2 sm:row-span-1"
+    const layoutSize2ARow = "relative overflow-hidden md:col-span-2 lg:col-span-2 sm:col-span-1"
+    const layoutSize2ACol = "relative overflow-hidden md:row-span-2 sm:row-span-1"
 
     const widthSizeA = 800
     const heightSizeA = 800

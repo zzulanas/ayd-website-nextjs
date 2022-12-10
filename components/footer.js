@@ -12,9 +12,9 @@ export default function Footer() {
             <h3 className='text-slate-400 font-thin'>se habla ingles</h3>
             
           </div>
-          <div className='items start'>
-          <h4 className='text-2xl text-gray-400'><a href="mailto: info@arq-y-di.com" className='hover:underline'>info@arq-y-di.com</a></h4>
-            <h4 className='text-2xl text-gray-400'><a href="tel:3105914881" className='hover:underline'>310-591-4881</a></h4>
+          <div className='self-start'>
+          <h4 className='text-2xl text-gray-400 text-left'><a href="mailto: info@arq-y-di.com" className='hover:underline'>info@arq-y-di.com</a></h4>
+            <h4 className='text-2xl text-gray-400 text-left'><a href="tel:3105914881" className='hover:underline'>310-591-4881</a></h4>
             <br/>
             <h4 className='text-2xl text-gray-400'>3526 East Olympic Blvd</h4>
             <h4 className='text-2xl text-gray-400'>Los Angeles, CA</h4>

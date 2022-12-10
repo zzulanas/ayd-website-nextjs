@@ -41,14 +41,14 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                 date={project.dateCreated}
               /> */}
 
-              <div className="grid grid-cols-2 gap-2 mx-auto px-5 container mb-20">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2  gap-2 mx-auto px-5 container mb-20">
                 <div>
                   <ContentfulImage
                   width={500}
                   height={1000}
                   alt={`Cover Image for ${project.title}`}
-                  className='shadow-small'
                   objectFit="cover"
+                  lightboxEnabled={true}
                   src={fiveXThousandImage.url}
                   key={fiveXThousandImage.url}
                 />
@@ -60,7 +60,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                       width={800}
                       height={800}
                       alt={`Cover Image for ${project.title}`}
-                      
+                      lightboxEnabled={true}
                       src={project.bannerImage.url}
                       key={project.bannerImage.url}
                     />
@@ -69,7 +69,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                   <div className='place-self-center text-right'>
                     <PostTitle >{project.title}</PostTitle>
                     <div className='flex flex-row justify-between'>
-                      <h2 className='text-2xl font-light text-gray-400'>{project.projectLocation}</h2>
+                      <h2 className='text-2xl font-light text-gray-400 text-left'>{project.projectLocation}</h2>
                       <h2 className='text-2xl font-light text-gray-400'><DateComponent dateString={project.dateCreated}/></h2>
                     </div>
                     <br/>
