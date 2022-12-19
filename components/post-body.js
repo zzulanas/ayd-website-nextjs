@@ -37,42 +37,50 @@ export default function PostBody({ content, images }) {
                       src={images[2].url}
                       key={images[2].url}
                     />
-                    <h2>{images[2].description}</h2>
+                    <h2 className='text-gray-400'>{images[2].description}</h2>
                     </div>)}
           {documentToReactComponents(
             section3,
             customMarkdownOptions(content)
           )}
-          {images.length > 3 && <ContentfulImage
+          {images.length > 3 && <div>
+          <ContentfulImage
                       width={800}
                       height={700}
                       alt={images[3].description}
                       lightboxEnabled={true}
                       src={images[3].url}
                       key={images[3].url}
-                    /> }
+                    /> 
+                    <h2 className='text-gray-400'>{images[3].description}</h2>
+                    </div>}
         </div>
         <div className={markdownStyles['markdown']}>
-        {images.length > 0 && <ContentfulImage
+        {images.length > 0 && <div>
+        <ContentfulImage
                       width={800}
                       height={700}
                       alt={images[0].description}
                       lightboxEnabled={true}
                       src={images[0].url}
                       key={images[0].url}
-                    />}
+                    />
+                    <h2 className='text-gray-400'>{images[0].description}</h2>
+                    </div>}
           {documentToReactComponents(
             section2,
             customMarkdownOptions(content)
           )}
-          {images.length > 1 && <ContentfulImage
+          {images.length > 1 && <div><ContentfulImage
                       width={800}
                       height={700}
                       alt={images[1].description}
                       lightboxEnabled={true}
                       src={images[1].url}
                       key={images[1].url}
-                    />}
+                    />
+                    <h2 className='text-gray-400'>{images[1].description}</h2>
+                    </div>}
         </div>
     </div>
     </Container>
