@@ -28,14 +28,17 @@ export default function PostBody({ content, images }) {
             section1,
             customMarkdownOptions(content)
           )}
-          {images.length > 2 && <ContentfulImage
+          {images.length > 2 && (<div>
+          <ContentfulImage
                       width={800}
                       height={700}
-                      alt={`C`}
+                      alt={images[2].description}
                       lightboxEnabled={true}
                       src={images[2].url}
                       key={images[2].url}
-                    />}
+                    />
+                    <h2>{images[2].description}</h2>
+                    </div>)}
           {documentToReactComponents(
             section3,
             customMarkdownOptions(content)
@@ -43,7 +46,7 @@ export default function PostBody({ content, images }) {
           {images.length > 3 && <ContentfulImage
                       width={800}
                       height={700}
-                      alt={`C`}
+                      alt={images[3].description}
                       lightboxEnabled={true}
                       src={images[3].url}
                       key={images[3].url}
@@ -53,7 +56,7 @@ export default function PostBody({ content, images }) {
         {images.length > 0 && <ContentfulImage
                       width={800}
                       height={700}
-                      alt={`C`}
+                      alt={images[0].description}
                       lightboxEnabled={true}
                       src={images[0].url}
                       key={images[0].url}
@@ -65,7 +68,7 @@ export default function PostBody({ content, images }) {
           {images.length > 1 && <ContentfulImage
                       width={800}
                       height={700}
-                      alt={`C`}
+                      alt={images[1].description}
                       lightboxEnabled={true}
                       src={images[1].url}
                       key={images[1].url}

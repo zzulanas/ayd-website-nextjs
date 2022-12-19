@@ -9,7 +9,7 @@ export default function CoverImage({ title, url, slug }) {
       height={1400}
       objectFit="cover"
       alt={`Cover Image for ${title}`}
-      className={cn('shadow-small', {
+      className={cn( {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}
       src={url}
@@ -17,7 +17,7 @@ export default function CoverImage({ title, url, slug }) {
   )
 
   return (
-    <div  className={cn('shadow-small', {
+    <div  className={cn({
       'hover:shadow-medium transition-shadow duration-600': slug,
     })}>
       {slug ? (

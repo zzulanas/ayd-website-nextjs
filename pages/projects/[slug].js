@@ -52,8 +52,9 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                   src={fiveXThousandImage.url}
                   key={fiveXThousandImage.url}
                 />
+                <h2 className='text-gray-400'>{fiveXThousandImage.description}</h2>
                 </div>
-                <div className='grid grid-cols-1'>
+                <div className='grid grid-cols-1 gap-y-20'>
 
                   <div className='place-self-end'>
                     <ContentfulImage
@@ -64,9 +65,10 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                       src={project.bannerImage.url}
                       key={project.bannerImage.url}
                     />
+                    <h2 className='text-gray-400'>{project.bannerImage.description}</h2>
                   </div>
     
-                  <div className='place-self-center text-right'>
+                  <div className='place-self-left text-right'>
                     <PostTitle >{project.title}</PostTitle>
                     <div className='flex flex-row justify-between'>
                       <h2 className='text-2xl font-light text-gray-400 text-left'>{project.projectLocation}</h2>

@@ -13,7 +13,7 @@ export default function Gallery({ pictures }){
 
     const textStyle = "opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-4xl text-white font-semibold"
     return(
-    <div className="grid grid-cols-1 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+    <div className="grid grid-cols-1 gap-y-10 gap-x-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
         <div className={layoutSizeA}>
             <Link href={`/projects/${pictures[0].slug}`} key={pictures[0].title}>
                 <a>
