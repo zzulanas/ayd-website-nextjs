@@ -41,7 +41,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                 date={project.dateCreated}
               /> */}
 
-              <div className="grid sm:grid-cols-1 md:grid-cols-2  gap-2 mx-auto px-5 container mb-20">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2  gap-2 mx-auto px-5 container mb-20 gap-x-10">
                 <div>
                   <ContentfulImage
                   width={500}
