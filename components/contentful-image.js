@@ -13,6 +13,12 @@ function cn(...classes) {
 
 const ContentfulImage = (props) => {
   const [open, setOpen] = useState(false);
+  let slides = null
+  if(props.slides !== undefined){
+    slides = props.slides.map(slide => ({ src: slide.url})) 
+  } else {
+    slides = [{src: props.src}]
+  }
   return (
           <>
           <Image 
@@ -23,11 +29,10 @@ const ContentfulImage = (props) => {
           
           {props.lightboxEnabled && <Lightbox
             open={open}
+            index={props.index}
             close={() => setOpen(false)}
-            slides={[
-              { src: props.src },
-            ]} /> }
-          
+            slides={slides} /> }
+
           </>)
 }
 

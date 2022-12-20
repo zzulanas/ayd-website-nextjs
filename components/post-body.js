@@ -34,6 +34,8 @@ export default function PostBody({ content, images }) {
                       height={700}
                       alt={images[2].description}
                       lightboxEnabled={true}
+                      slides={images}
+                      index={2}
                       src={images[2].url}
                       key={images[2].url}
                     />
@@ -49,6 +51,8 @@ export default function PostBody({ content, images }) {
                       height={700}
                       alt={images[3].description}
                       lightboxEnabled={true}
+                      slides={images}
+                      index={3}
                       src={images[3].url}
                       key={images[3].url}
                     /> 
@@ -62,6 +66,8 @@ export default function PostBody({ content, images }) {
                       height={700}
                       alt={images[0].description}
                       lightboxEnabled={true}
+                      slides={images}
+                      index={0}
                       src={images[0].url}
                       key={images[0].url}
                     />
@@ -76,6 +82,8 @@ export default function PostBody({ content, images }) {
                       height={700}
                       alt={images[1].description}
                       lightboxEnabled={true}
+                      slides={images}
+                      index={1}
                       src={images[1].url}
                       key={images[1].url}
                     />
@@ -83,6 +91,22 @@ export default function PostBody({ content, images }) {
                     </div>}
         </div>
     </div>
+    {images.length > 4 &&  
+    <div className='relative grayscale brightness-50 hover:grayscale-0 hover:brightness-100 transition w-full'>
+      <ContentfulImage
+                      width={1200}
+                      height={200}
+                      objectFit="cover"
+                      alt={images[0].description}
+                      lightboxEnabled={true}
+                      slides={images}
+                      index={0}
+                      src={images[0].url}
+                      key={images[0].url}
+                      className="absolute"
+                    />
+                    <div className='opacity-20 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-4xl text-black font-semibold'>View more project pictures</div>
+    </div>}
     </Container>
   )
 }
