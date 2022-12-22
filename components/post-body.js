@@ -59,9 +59,7 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
   
   let bottomImages = []
   if(images.length > 4){
-    console.log(images)
     let temp = images.slice(4)
-    console.log(images)
     bottomImages = temp.map((image, idx) => {
       return <ContentfulImage
                       width={BODY_IMAGE_WIDTH}
