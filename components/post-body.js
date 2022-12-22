@@ -10,6 +10,7 @@ import "yet-another-react-lightbox/styles.css";
 import PostTitle from './post-title';
 import DateComponent from './date';
 import SectionSeparator from './section-separator';
+import { BODY_IMAGE_HEIGHT, BODY_IMAGE_WIDTH } from '../lib/constants';
 
 const customMarkdownOptions = (content) => ({
   renderNode: {
@@ -52,9 +53,6 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
   const section1 = {content: content.json.content.slice(0,2), data: {}, nodeType: 'document'}
   const section2 = {content: content.json.content.slice(2,4), data: {}, nodeType: 'document'}
   const section3 = {content: content.json.content.slice(4), data: {}, nodeType: 'document'}
-
-  const BODY_IMAGE_WIDTH = 800
-  const BODY_IMAGE_HEIGHT = 800
   
   
   let bottomImages = []
@@ -95,8 +93,8 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
 
           <div className='place-self-end'>
             <ContentfulImage
-              width={800}
-              height={800}
+              width={BODY_IMAGE_WIDTH}
+              height={BODY_IMAGE_HEIGHT}
               alt={`Cover Image for ${project.title}`}
               lightboxEnabled={true}
               src={project.bannerImage.url}
@@ -130,8 +128,8 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
           )}
           {images.length > 0 && <div>
           <ContentfulImage
-                      width={800}
-                      height={700}
+                      width={BODY_IMAGE_WIDTH}
+                      height={BODY_IMAGE_HEIGHT}
                       alt={images[0].description}
                       lightboxEnabled={true}
                       index={0}
@@ -147,8 +145,8 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
           )}
           {images.length > 2 && (<div>
           <ContentfulImage
-                      width={800}
-                      height={700}
+                      width={BODY_IMAGE_WIDTH}
+                      height={BODY_IMAGE_HEIGHT}
                       alt={images[2].description}
                       lightboxEnabled={true}
                       slides={images}
@@ -164,8 +162,8 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
         <div className={markdownStyles['markdown']}>
         {images.length > 3 && <div>
         <ContentfulImage
-                      width={800}
-                      height={700}
+                      width={BODY_IMAGE_WIDTH}
+                      height={BODY_IMAGE_HEIGHT}
                       alt={images[3].description}
                       lightboxEnabled={true}
                       index={3}
@@ -180,8 +178,8 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
             customMarkdownOptions(content)
           )}
           {images.length > 1 && <div><ContentfulImage
-                      width={800}
-                      height={700}
+                      width={BODY_IMAGE_WIDTH}
+                      height={BODY_IMAGE_HEIGHT}
                       alt={images[1].description}
                       lightboxEnabled={true}
                       index={1}
