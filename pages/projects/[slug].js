@@ -41,50 +41,8 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                 date={project.dateCreated}
               /> */}
 
-              <div className="grid sm:grid-cols-1 md:grid-cols-2  gap-2 mx-auto px-5 container mb-20 gap-x-10">
-                <div>
-                  <ContentfulImage
-                  width={500}
-                  height={1000}
-                  alt={`Cover Image for ${project.title}`}
-                  objectFit="cover"
-                  lightboxEnabled={true}
-                  src={fiveXThousandImage.url}
-                  key={fiveXThousandImage.url}
-                />
-                <h2 className='text-gray-400'>{fiveXThousandImage.description}</h2>
-                </div>
-                <div className='grid grid-cols-1 gap-y-20'>
 
-                  <div className='place-self-end'>
-                    <ContentfulImage
-                      width={800}
-                      height={800}
-                      alt={`Cover Image for ${project.title}`}
-                      lightboxEnabled={true}
-                      src={project.bannerImage.url}
-                      key={project.bannerImage.url}
-                    />
-                    <h2 className='text-gray-400'>{project.bannerImage.description}</h2>
-                  </div>
-    
-                  <div className='place-self-left text-right'>
-                    <PostTitle >{project.title}</PostTitle>
-                    <div className='flex flex-row justify-between'>
-                      <h2 className='text-2xl font-light text-gray-400 text-left'>{project.projectLocation}</h2>
-                      <h2 className='text-2xl font-light text-gray-400'><DateComponent dateString={project.dateCreated}/></h2>
-                    </div>
-                    <br/>
-                    <h2 className='text-lg text-left font-light'>{project.projectTagline}</h2>
-                  </div>
-
-                  <div>
-                  </div>
-                  
-                </div>
-              </div>
-              <SectionSeparator />
-              <PostBody content={project.content} images={project.projectImagesCollection.items}/>
+              <PostBody content={project.content} images={project.projectImagesCollection.items} project={project} fiveXThousandImage={fiveXThousandImage}/>
             </article>
 
             <SectionSeparator />
