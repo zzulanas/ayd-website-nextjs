@@ -3,7 +3,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import markdownStyles from "../components/markdown-styles.module.css"
 import Layout from '../components/layout'
-import { getAboutDescription, getAllTeamMembers } from '../lib/api'
+import { getAboutDescription, getAllTeamMembers, getFooterData } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Avatar from '../components/avatar'
@@ -20,10 +20,10 @@ const customMarkdownOptions = (content) => ({
   },
 })
 
-export default function About({ preview, teamMembers, description }) {
+export default function About({ preview, teamMembers, description, footer }) {
   return (
     <>
-      <Layout preview={preview}>
+      <Layout preview={preview} footer={footer}>
         <Head>
           <title>About AyD</title>
         </Head>
@@ -65,9 +65,9 @@ export default function About({ preview, teamMembers, description }) {
 export async function getStaticProps({ preview = false }) {
   const teamMembers = (await getAllTeamMembers()) ?? []
   const description = (await getAboutDescription()) ?? []
-  console.log(description.json)
+  const footer = await getFooterData() ?? null
   return {
-    props: { preview, teamMembers, description },
+    props: { preview, teamMembers, description, footer },
     revalidate: 30,
   }
 }

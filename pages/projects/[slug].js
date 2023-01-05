@@ -8,13 +8,13 @@ import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
-import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../lib/api'
+import { getAllProjectsWithSlug, getFooterData, getProjectAndMoreProjects } from '../../lib/api'
 import PostTitle from '../../components/post-title'
 import { CMS_NAME } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
 import DateComponent from '../../components/date'
 
-export default function Post({ project, moreProjects, preview, fiveXThousandImage }) {
+export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
   const router = useRouter()
 
   if (!router.isFallback && !project) {
@@ -22,7 +22,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} footer={footer}>
       <Container className="">
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
@@ -58,6 +58,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getProjectAndMoreProjects(params.slug)
+  const footer = await getFooterData()
   let fiveXThousandImage = data.project.projectImagesCollection.items[0]
   data.project.projectImagesCollection.items.forEach((image, idx) => {
   if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
@@ -71,6 +72,7 @@ export async function getStaticProps({ params, preview = false }) {
       project: data?.project ?? null,
       moreProjects: data?.moreProjects ?? null,
       fiveXThousandImage: fiveXThousandImage ?? null,
+      footer: footer ?? null,
     },
     revalidate: 30,
   }

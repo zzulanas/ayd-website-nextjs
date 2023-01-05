@@ -3,15 +3,15 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPostsForHome, getAllProjectsByTag, getAllProjectsWithSlug } from '../lib/api'
+import { getAllPostsForHome, getAllProjectsByTag, getAllProjectsWithSlug, getFooterData } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 
-export default function Residential({ preview, allProjects }) {
+export default function Residential({ preview, allProjects, footer }) {
   // const morePosts = allPosts.slice(1)
   return (
     <>
-      <Layout preview={preview}>
+      <Layout preview={preview} footer={footer}>
         <Head>
           <title>Commercial Projects</title>
         </Head>
@@ -35,8 +35,9 @@ export default function Residential({ preview, allProjects }) {
 
 export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsByTag("categoryCommercial")) ?? []
+  const footer = await getFooterData()
   return {
-    props: { preview, allProjects },
+    props: { preview, allProjects, footer },
     revalidate: 30,
   }
 }
