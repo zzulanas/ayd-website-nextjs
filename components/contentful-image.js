@@ -13,21 +13,14 @@ function cn(...classes) {
 
 const ContentfulImage = (props) => {
   const [open, setOpen] = useState(false);
+
   return (
           <>
           <Image 
           loader={contentfulLoader} 
           className={props.lightboxEnabled ? "cursor-pointer" : ""}
-          {...props}
-          onClick={() => setOpen(true)} />
-          
-          {props.lightboxEnabled && <Lightbox
-            open={open}
-            close={() => setOpen(false)}
-            slides={[
-              { src: props.src },
-            ]} /> }
-          
+          {...props} />
+
           </>)
 }
 

@@ -3,7 +3,7 @@ import Footer from '../components/footer'
 import Meta from '../components/meta'
 import Nav from './nav'
 
-export default function Layout({ preview, children }) {
+export default function Layout({ preview, children, footer }) {
   return (
     <>
       <Meta />
@@ -11,7 +11,7 @@ export default function Layout({ preview, children }) {
       <div className="min-h-screen mt-10">
         <main>{children}</main>
       </div>
-      <Footer/>
+      <Footer data={footer}/>
     </>
   )
 }

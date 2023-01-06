@@ -3,15 +3,15 @@ import MoreStories from '../components/more-stories'
 import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import { getAllPicturesForGallery, getAllPostsForHome, getAllProjectsWithSlug } from '../lib/api'
+import { getAllPicturesForGallery, getAllPostsForHome, getAllProjectsWithSlug, getFooterData } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Gallery from '../components/gallery'
 
-export default function Index({ preview, pictures }) {
+export default function Index({ preview, pictures, footer }) {
   return (
     <>
-      <Layout preview={preview}>
+      <Layout preview={preview} footer={footer}>
         <Head>
           <title>AyD: Arquitectura y Diseño</title>
         </Head>
@@ -36,6 +36,7 @@ export default function Index({ preview, pictures }) {
 
 export async function getStaticProps({ preview = false }) {
   const pictures = await getAllPicturesForGallery()
+  const footer = await getFooterData()
   pictures.sort((picA, picB) => {
     if(parseInt(picA.homesort) < parseInt(picB.homesort) ){
       return -1
@@ -46,7 +47,7 @@ export async function getStaticProps({ preview = false }) {
     return 0;
   })
   return {
-    props: { preview, pictures },
+    props: { preview, pictures, footer },
     revalidate: 30,
   }
 }
