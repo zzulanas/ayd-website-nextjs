@@ -108,7 +108,7 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
             <PostTitle >{project.title}</PostTitle>
             <div className='flex flex-row justify-between'>
               <h2 className='text-2xl font-light text-gray-400 text-left'>{project.projectLocation}</h2>
-              <h2 className='text-2xl font-light text-gray-400'><DateComponent dateString={project.dateCreated}/></h2>
+              <h2 className='text-2xl font-light text-gray-400'>{project.projectSubtitle == null ? <DateComponent dateString={project.dateCreated}/> : project.projectSubtitle}</h2>
             </div>
             <br/>
             <h2 className='text-lg text-left font-light'>{project.projectTagline}</h2>
