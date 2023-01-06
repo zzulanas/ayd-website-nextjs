@@ -17,6 +17,10 @@ import DateComponent from '../../components/date'
 export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
   const router = useRouter()
 
+  if(router.isFallback){
+    return <h1>Loading…</h1>
+  }
+
   if (!router.isFallback && !project && !footer) {
     return <ErrorPage statusCode={404} />
   }
