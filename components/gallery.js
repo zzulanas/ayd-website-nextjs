@@ -19,7 +19,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[0].bannerImage.url}
+                        src={pictures[0].homepageImageUrl}
                         width={widthSizeA}
                         height={heightSizeA}
                     />
@@ -32,7 +32,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[1].bannerImage.url}
+                        src={pictures[1].homepageImageUrl}
                         width={widthSizeA}
                         height={heightSizeA}
                     />
@@ -45,7 +45,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[2].bannerImage.url}
+                        src={pictures[2].homepageImageUrl}
                         width={widthSizeA}
                         height={heightSizeA}
                     />
@@ -58,7 +58,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[3].bannerImage.url}
+                        src={pictures[3].homepageImageUrl}
                         width={widthSizeA}
                         height={heightSizeA}
                     />
@@ -71,7 +71,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[4].bannerImage.url}
+                        src={pictures[4].homepageImageUrl}
                         width={widthSizeA * 2}
                         height={heightSizeA}
                     />
@@ -86,7 +86,7 @@ export default function Gallery({ pictures }){
                         objectFit="cover"
                         width={widthSizeA}
                         height={heightSizeA * 2}
-                        src={pictures[5].bannerImage.url}
+                        src={pictures[5].homepageImageUrl}
                     />
                     <div className={textStyle}>{pictures[5].title}</div>
                 </a>
@@ -97,7 +97,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[6].bannerImage.url}
+                        src={pictures[6].homepageImageUrl}
                         width={widthSizeA}
                         height={heightSizeA * 2}
                     />
@@ -110,7 +110,7 @@ export default function Gallery({ pictures }){
                 <a>
                     <ContentfulImage
                         objectFit="cover"
-                        src={pictures[7].bannerImage.url}
+                        src={pictures[7].homepageImageUrl}
                         width={widthSizeA}
                         height={heightSizeA * 2}
                     />
