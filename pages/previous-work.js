@@ -36,6 +36,7 @@ export default function Residential({ preview, allProjects, footer }) {
 
 export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsByTag("categoryPreviousWork")) ?? []
+  sortAllProjects(allProjects, "previousWorkSort")
   const footer = await getFooterData() ?? null
   return {
     props: { preview, allProjects, footer },
