@@ -19,12 +19,9 @@ export default function PostPreview({
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         
-          <a className="hover:underline w-full h-full">{title}</a>
+          <a className="hover:underline w-full h-full cursor-pointer">{title}</a>
 
       </h3>
-      <div className="text-lg mb-4">
-        <DateComponent dateString={date} />
-      </div>
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
       {author && <Avatar name={author.name} picture={author.picture} />}
     </div>

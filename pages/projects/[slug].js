@@ -25,6 +25,10 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
     return <ErrorPage statusCode={404} />
   }
 
+  const images = project.projectImagesCollection.items.filter(image => {
+    const hasTag = image.contentfulMetadata.tags.some(tag => tag.id === "homepageImage")
+    return !hasTag
+  })
   return (
     <Layout preview={preview} footer={footer}>
       <Container className="">
@@ -46,7 +50,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
               /> */}
 
 
-              <PostBody content={project.content} images={project.projectImagesCollection.items} project={project} fiveXThousandImage={fiveXThousandImage}/>
+              <PostBody content={project.content} images={images} project={project} fiveXThousandImage={fiveXThousandImage}/>
             </article>
 
             <SectionSeparator />
