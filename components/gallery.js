@@ -11,7 +11,7 @@ export default function Gallery({ pictures }){
     const widthSizeA = 800
     const heightSizeA = 800
 
-    const textStyle = "opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-4xl text-white font-semibold"
+    const textStyle = "opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-4xl text-white font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
     return(
     <div className="grid grid-cols-1 gap-y-10 gap-x-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 pb-12">
         <div className={layoutSizeA}>
