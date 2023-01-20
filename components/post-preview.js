@@ -24,7 +24,7 @@ export default function PostPreview({
 
       </h3>
       {location != null &&
-        <div className="text-lg text-slate-400">
+        <div className="text-lg font-thin text-slate-400">
           {location}
         </div>
       }
