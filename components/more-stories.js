@@ -13,6 +13,7 @@ export default function MoreStories({ pageName, projects }) {
             date={project.dateCreated}
             slug={project.slug}
             excerpt={project.projectTagLine}
+            location={project.projectLocation}
           />
         ))}
       </div>
