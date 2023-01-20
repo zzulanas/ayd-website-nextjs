@@ -8,7 +8,7 @@ export default function Layout({ preview, children, footer }) {
     <>
       <Meta />
       <Nav/>
-      <div className="min-h-screen mt-10">
+      <div className="min-h-screen md:mt-10">
         <main>{children}</main>
       </div>
       <Footer data={footer}/>
