@@ -160,24 +160,8 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
           {images.length >= 5 &&  splitImages[1]}
         </div>
         <div className={markdownStyles['markdown']}>
-        {images.length > 3 && <div>
+        {images.length > 1 && <div>
         <ContentfulImage
-                      width={BODY_IMAGE_WIDTH}
-                      height={BODY_IMAGE_HEIGHT}
-                      alt={images[3].description}
-                      lightboxEnabled={true}
-                      index={3}
-                      src={images[3].url}
-                      key={images[3].url}
-                      onClick={() => setIndex(5)}
-                    />
-                    <h2 className='text-gray-400'>{images[3].description}</h2>
-                    </div>}
-          {documentToReactComponents(
-            section2,
-            customMarkdownOptions(content)
-          )}
-          {images.length > 1 && <div><ContentfulImage
                       width={BODY_IMAGE_WIDTH}
                       height={BODY_IMAGE_HEIGHT}
                       alt={images[1].description}
@@ -188,6 +172,22 @@ export default function PostBody({ content, images, project, fiveXThousandImage 
                       onClick={() => setIndex(3)}
                     />
                     <h2 className='text-gray-400'>{images[1].description}</h2>
+                    </div>}
+          {documentToReactComponents(
+            section2,
+            customMarkdownOptions(content)
+          )}
+          {images.length > 3 && <div><ContentfulImage
+                      width={BODY_IMAGE_WIDTH}
+                      height={BODY_IMAGE_HEIGHT}
+                      alt={images[3].description}
+                      lightboxEnabled={true}
+                      index={3}
+                      src={images[3].url}
+                      key={images[3].url}
+                      onClick={() => setIndex(5)}
+                    />
+                    <h2 className='text-gray-400'>{images[3].description}</h2>
                     </div>}
           {images.length >= 4 &&  splitImages[0]}
         <Lightbox
