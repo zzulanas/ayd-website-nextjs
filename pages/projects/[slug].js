@@ -17,8 +17,6 @@ import DateComponent from '../../components/date'
 export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
   const router = useRouter()
 
-  const title = project.title
-
   if (router.isFallback) {
     return <h1>Loading…</h1>
   }
@@ -41,10 +39,10 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
             <article>
               <Head>
                 <title>
-                  <title>{title} | AyD </title>
+                  <title>{project.title} | AyD</title>
                   <meta
                     property="og:image"
-                    content={`*.vercel.app/api/og?title=${title}?category=${project.category}`}
+                    content={$`*.vercel.app/api/og?title=${project.title}`}
                   />
                 </title>
                 <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
