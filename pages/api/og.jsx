@@ -65,7 +65,7 @@ export default function handler(request) {
 
             ),
             {
-                width: 1060,
+                width: 1200,
                 height: 630,
             },
         );
