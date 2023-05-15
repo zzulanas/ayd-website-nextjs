@@ -17,7 +17,7 @@ export default function handler(request) {
             : '';
 
         const imageUrl = searchParams.has('imageUrl')
-            ? searchParams.get('imageUrl')?.slice(0, 100)
+            ? searchParams.get('imageUrl')?.slice(0, 300)
             : null;
 
         return new ImageResponse(
