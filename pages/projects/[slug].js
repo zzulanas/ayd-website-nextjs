@@ -42,7 +42,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                   <title>{project.title} | AyD</title>
                   <meta
                     property="og:image"
-                    content={$`*.vercel.app/api/og?title=${project.title}`}
+                    content={`*.vercel.app/api/og?title=${project.title}`}
                   />
                 </title>
                 <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
