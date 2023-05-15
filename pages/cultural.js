@@ -19,8 +19,8 @@ export default function Residential({ preview, allProjects, footer }) {
           <title>{title} | AyD</title>
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
-          <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/cultural`} />
-          <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?title=${title}`} />
+          <meta property="og:url" content={`${process.env.VERCEL_URL}/cultural`} />
+          <meta property="og:image" content={`${process.env.VERCEL_URL}/api/og?title=${title}`} />
         </Head>
         <Container>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Cultural Projects"} />}

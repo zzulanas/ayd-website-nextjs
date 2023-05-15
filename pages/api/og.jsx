@@ -33,6 +33,7 @@ export default function handler(request) {
                         backgroundImage: "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)",
                         fontSize: 32,
                         fontWeight: 600,
+                        fontFamily: 'sans-serif',
                         padding: 80
                     }}
                 >
