@@ -10,14 +10,14 @@ import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
 import { getAllProjectsWithSlug, getFooterData, getProjectAndMoreProjects } from '../../lib/api'
 import PostTitle from '../../components/post-title'
-import { CMS_NAME } from '../../lib/constants'
+import { CMS_NAME, OG_DESCRIPTION } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
 import DateComponent from '../../components/date'
 
-export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
+export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer, title }) {
   const router = useRouter()
 
-  if(router.isFallback){
+  if (router.isFallback) {
     return <h1>Loading…</h1>
   }
 
@@ -38,10 +38,11 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
           <>
             <article>
               <Head>
-                <title>
-                  {project.title} | AyD
-                </title>
-                <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
+                <title>{title} | AyD</title>
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={OG_DESCRIPTION} />
+                <meta property="og:url" content={`https://${process.env.VERCEL_URL}/projects/${project.slug}`} />
+                <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
               </Head>
               {/* <PostHeader
                 title={project.title}
@@ -50,12 +51,12 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
               /> */}
 
 
-              <PostBody content={project.content} images={images} project={project} fiveXThousandImage={fiveXThousandImage}/>
+              <PostBody content={project.content} images={images} project={project} fiveXThousandImage={fiveXThousandImage} />
             </article>
 
             <SectionSeparator />
             {moreProjects && moreProjects.length > 0 && (
-              <MoreStories projects={moreProjects} pageName={"More Projects"}/>
+              <MoreStories projects={moreProjects} pageName={"More Projects"} />
             )}
           </>
         )}
@@ -69,15 +70,16 @@ export async function getStaticProps({ params, preview = false }) {
   const footer = await getFooterData()
   let fiveXThousandImage = data.project.projectImagesCollection.items[0]
   data.project.projectImagesCollection.items.forEach((image, idx) => {
-  if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
-    fiveXThousandImage = image
-    data.project.projectImagesCollection.items.splice(idx, 1)
-  }
-})
+    if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')) {
+      fiveXThousandImage = image
+      data.project.projectImagesCollection.items.splice(idx, 1)
+    }
+  })
   return {
     props: {
       preview,
       project: data?.project ?? null,
+      title: data?.project?.title ?? null,
       moreProjects: data?.moreProjects ?? null,
       fiveXThousandImage: fiveXThousandImage ?? null,
       footer: footer ?? null,

@@ -5,15 +5,20 @@ import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllPostsForHome, getAllProjectsByTag, getAllProjectsWithSlug, getFooterData } from '../lib/api'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { OG_DESCRIPTION } from '../lib/constants'
 import { sortAllProjects } from '../lib/utils'
 
 export default function Residential({ preview, allProjects, footer }) {
+  const title = "Commercial Projects"
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>Commercial Projects</title>
+          <title>{title} | AyD</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={OG_DESCRIPTION} />
+          <meta property="og:url" content={`https://${process.env.VERCEL_URL}/commercial`} />
+          <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}`} />
         </Head>
         <Container>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Commercial Projects"} />}

@@ -6,16 +6,21 @@ import Layout from '../components/layout'
 import { getAllPostsForHome, getAllProjectsByTag, getAllProjectsWithSlug, getFooterData } from '../lib/api'
 import Head from 'next/head'
 import { sortAllProjects } from '../lib/utils'
-import { CMS_NAME } from '../lib/constants'
+import { OG_DESCRIPTION } from '../lib/constants'
 
 export default function Residential({ preview, allProjects, footer }) {
   const heroProject = allProjects[0]
+  const title = "Previous Work"
   // const morePosts = allPosts.slice(1)
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>Previous Work</title>
+          <title>{title} | AyD</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={OG_DESCRIPTION} />
+          <meta property="og:url" content={`https://${process.env.VERCEL_URL}/previous-work`} />
+          <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}`} />
         </Head>
         <Container>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Previous Work"} />}

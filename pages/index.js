@@ -5,19 +5,26 @@ import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllPicturesForGallery, getAllPostsForHome, getAllProjectsWithSlug, getFooterData } from '../lib/api'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { OG_DESCRIPTION } from '../lib/constants'
 import Gallery from '../components/gallery'
 
 export default function Index({ preview, pictures, footer }) {
+
+  const title = "AyD Arquitectura y Diseño"
+
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>AyD: Arquitectura y Diseño</title>
+          <title>{title} | AyD</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={OG_DESCRIPTION} />
+          <meta property="og:url" content={`https://${process.env.VERCEL_URL}`} />
+          <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}`} />
         </Head>
         <Container>
           <Intro />
-          <Gallery pictures={pictures}/>
+          <Gallery pictures={pictures} />
           {/* {heroProject && (
             <HeroPost
               title={heroProject.title}
@@ -38,10 +45,10 @@ export async function getStaticProps({ preview = false }) {
   const pictures = await getAllPicturesForGallery()
   const footer = await getFooterData()
   pictures.sort((picA, picB) => {
-    if(parseInt(picA.homesort) < parseInt(picB.homesort) ){
+    if (parseInt(picA.homesort) < parseInt(picB.homesort)) {
       return -1
-    } 
-    if(parseInt(picA.homesort) > parseInt(picB.homesort) ){
+    }
+    if (parseInt(picA.homesort) > parseInt(picB.homesort)) {
       return 1
     }
     return 0;
