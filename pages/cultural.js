@@ -19,7 +19,7 @@ export default function Residential({ preview, allProjects, footer }) {
           <title>{title}</title>
           <meta
             property="og:image"
-            content={$`*.vercel.app/api/og?title=${title}`}
+            content={`*.vercel.app/api/og?title=${title}`}
           />
         </Head>
         <Container>

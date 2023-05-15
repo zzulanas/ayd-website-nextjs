@@ -19,7 +19,7 @@ export default function Index({ preview, pictures, footer }) {
           <title>{title}</title>
           <meta
             property="og:image"
-            content={$`*.vercel.app/api/og?title=${title}`}
+            content={`*.vercel.app/api/og?title=${title}`}
           />
         </Head>
         <Container>
