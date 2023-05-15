@@ -68,6 +68,21 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
 export async function getStaticProps({ params, preview = false }) {
   const data = await getProjectAndMoreProjects(params.slug)
   const footer = await getFooterData()
+  const category = () => {
+    data.project.contentfulMetadata.tags.forEach(tag => {
+      switch (tag.id) {
+        case "categoryResidential":
+          return "Residential"
+        case "categoryCommercial":
+          return "Commercial"
+        case "categoryCultural":
+          return "Cultural"
+        default:
+          return null
+      }
+    }
+    )
+  }
   let fiveXThousandImage = data.project.projectImagesCollection.items[0]
   data.project.projectImagesCollection.items.forEach((image, idx) => {
     if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')) {
@@ -80,7 +95,7 @@ export async function getStaticProps({ params, preview = false }) {
       preview,
       project: data?.project ?? null,
       title: data?.project?.title ?? null,
-      category: data?.project?.category ?? null,
+      category: category() ?? null,
       slug: data?.project?.slug ?? null,
       bannerImageUrl: data?.project?.bannerImage?.url ?? null,
       moreProjects: data?.moreProjects ?? null,
