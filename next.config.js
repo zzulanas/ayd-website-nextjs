@@ -4,5 +4,4 @@ module.exports = {
     loader: 'custom',
     domains: ['images.ctfassets.net'],
   },
-  runtime: 'experimental-edge'
 }
