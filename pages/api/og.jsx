@@ -8,17 +8,17 @@ export default function handler(request) {
     try {
         const { searchParams } = new URL(request.url);
 
-        // ?title=Hello%20World&category=Example
-        const hasTitle = searchParams.has('title');
-        const title = hasTitle
+        const title = searchParams.has('title')
             ? searchParams.get('title')?.slice(0, 100)
             : 'Arquitectura y Diseño';
 
-        // ?category=Example
-        const hasCategory = searchParams.has('category');
-        const category = hasCategory
+        const category = searchParams.has('category')
             ? searchParams.get('category')?.slice(0, 100)
             : '';
+
+        const imageUrl = searchParams.has('imageUrl')
+            ? searchParams.get('imageUrl')?.slice(0, 100)
+            : "https://images.ctfassets.net/1dot4nwylomy/1c28w3Ck9Uy9mHzlWc8gkT/32ca18d06b7f16219e597bd56243dbd5/Site_Plan-01_WEB.jpg?w=640&q=100";
 
         return new ImageResponse(
             (
@@ -27,9 +27,9 @@ export default function handler(request) {
                         height: '100%',
                         width: '100%',
                         display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        justifyContent: 'center',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
                         backgroundImage: "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)",
                         fontSize: 32,
                         fontWeight: 600,
@@ -37,33 +37,24 @@ export default function handler(request) {
                         padding: 80
                     }}
                 >
-                    <div
-                        width="256"
-                        height="256"
-                        style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            background: 'black',
-                            borderRadius: '90%',
-                            padding: '40px',
-                            color: 'white',
-                        }}
-                    >
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <span
                             style={{
                                 fontSize: "90px",
                             }}>
                             AyD
                         </span>
+                        <div style={{ marginLeft: 20, display: "flex", flexDirection: "column" }}>
+                            <div style={{ marginTop: 50, fontSize: "45px" }}>{title}</div>
+                            <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
+                        </div>
                     </div>
-                    <div style={{ marginLeft: 20, display: "flex", flexDirection: "column" }}>
-                        <div style={{ marginTop: 50, fontSize: "45px" }}>{title}</div>
-                        <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
-                    </div>
+                    {imageUrl &&
+                        <div style={{ width: '500px', height: '500px', borderRadius: '50%', overflow: 'hidden', display: "flex" }}>
+                            <img src={imageUrl} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </div>
+                    }
                 </div>
-
-
             ),
             {
                 width: 1200,

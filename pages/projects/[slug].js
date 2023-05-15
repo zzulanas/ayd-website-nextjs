@@ -14,7 +14,7 @@ import { CMS_NAME, OG_DESCRIPTION } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
 import DateComponent from '../../components/date'
 
-export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer, title }) {
+export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer, title, category, slug, bannerImageUrl }) {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -41,8 +41,8 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                 <title>{title} | AyD</title>
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={OG_DESCRIPTION} />
-                <meta property="og:url" content={`https://${process.env.VERCEL_URL}/projects/${project.slug}`} />
-                <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
+                <meta property="og:url" content={`https://${process.env.VERCEL_URL}/projects/${slug}`} />
+                <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}&category=${category}&imageUrl=${bannerImageUrl}`} />
               </Head>
               {/* <PostHeader
                 title={project.title}
@@ -80,6 +80,9 @@ export async function getStaticProps({ params, preview = false }) {
       preview,
       project: data?.project ?? null,
       title: data?.project?.title ?? null,
+      category: data?.project?.category ?? null,
+      slug: data?.project?.slug ?? null,
+      bannerImageUrl: data?.project?.bannerImage?.url ?? null,
       moreProjects: data?.moreProjects ?? null,
       fiveXThousandImage: fiveXThousandImage ?? null,
       footer: footer ?? null,
