@@ -5,7 +5,7 @@ import markdownStyles from "../components/markdown-styles.module.css"
 import Layout from '../components/layout'
 import { getAboutDescription, getAllTeamMembers, getFooterData } from '../lib/api'
 import Head from 'next/head'
-import { CMS_NAME, OG_DESCRIPTION } from '../lib/constants'
+import { OG_DESCRIPTION } from '../lib/constants'
 import Avatar from '../components/avatar'
 import SectionSeparator from '../components/section-separator'
 
