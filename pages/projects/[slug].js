@@ -17,6 +17,8 @@ import DateComponent from '../../components/date'
 export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
   const router = useRouter()
 
+  const title = project.title
+
   if (router.isFallback) {
     return <h1>Loading…</h1>
   }
