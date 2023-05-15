@@ -17,7 +17,7 @@ export default function Residential({ preview, allProjects, footer }) {
           <title>{title} | AyD </title>
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
-          <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/projects/${project.slug}`} />
+          <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/residential`} />
           <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?title=${title}`} />
         </Head>
         <Container>
