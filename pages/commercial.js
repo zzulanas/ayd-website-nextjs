@@ -9,11 +9,16 @@ import { CMS_NAME } from '../lib/constants'
 import { sortAllProjects } from '../lib/utils'
 
 export default function Residential({ preview, allProjects, footer }) {
+  const title = "Commercial Projects"
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>Commercial Projects</title>
+          <title>{title}</title>
+          <meta
+            property="og:image"
+            content={$`*.vercel.app/api/og?title=${title}`}
+          />
         </Head>
         <Container>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Commercial Projects"} />}

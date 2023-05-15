@@ -9,15 +9,22 @@ import { CMS_NAME } from '../lib/constants'
 import Gallery from '../components/gallery'
 
 export default function Index({ preview, pictures, footer }) {
+
+  const title = "AyD Arquitectura y Diseño"
+
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>AyD: Arquitectura y Diseño</title>
+          <title>{title}</title>
+          <meta
+            property="og:image"
+            content={$`*.vercel.app/api/og?title=${title}`}
+          />
         </Head>
         <Container>
           <Intro />
-          <Gallery pictures={pictures}/>
+          <Gallery pictures={pictures} />
           {/* {heroProject && (
             <HeroPost
               title={heroProject.title}
@@ -38,10 +45,10 @@ export async function getStaticProps({ preview = false }) {
   const pictures = await getAllPicturesForGallery()
   const footer = await getFooterData()
   pictures.sort((picA, picB) => {
-    if(parseInt(picA.homesort) < parseInt(picB.homesort) ){
+    if (parseInt(picA.homesort) < parseInt(picB.homesort)) {
       return -1
-    } 
-    if(parseInt(picA.homesort) > parseInt(picB.homesort) ){
+    }
+    if (parseInt(picA.homesort) > parseInt(picB.homesort)) {
       return 1
     }
     return 0;

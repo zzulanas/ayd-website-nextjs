@@ -21,31 +21,38 @@ const customMarkdownOptions = (content) => ({
 })
 
 export default function About({ preview, teamMembers, description, footer }) {
+
+  const title = "About AyD"
+
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>About AyD</title>
+          <title>{title}</title>
+          <meta
+            property="og:image"
+            content={$`*.vercel.app/api/og?title=${title}`}
+          />
         </Head>
         <Container>
-        <div className="grid grid-cols-1">
-          <div>
-            <h2 className="mb-8 text-6xl md:text-7xl font-light tracking-tighter leading-tight">
-              About AyD
-            </h2>
-          </div>
-          <div className={markdownStyles['markdown']}>
-            {documentToReactComponents(
-              description.json,
-              customMarkdownOptions(description.json)
-            )}
-          </div>
+          <div className="grid grid-cols-1">
+            <div>
+              <h2 className="mb-8 text-6xl md:text-7xl font-light tracking-tighter leading-tight">
+                About AyD
+              </h2>
+            </div>
+            <div className={markdownStyles['markdown']}>
+              {documentToReactComponents(
+                description.json,
+                customMarkdownOptions(description.json)
+              )}
+            </div>
 
-        </div>
-        <SectionSeparator></SectionSeparator>
+          </div>
+          <SectionSeparator></SectionSeparator>
           <h2 className='font-light text-6xl text-center py-10'>Meet the team</h2>
           <div className='grid lg:grid-cols-2 md:grid-cols-1"'>
-            {teamMembers.map((member)=> {
+            {teamMembers.map((member) => {
               return <Avatar
                 picture={member.memberPicture}
                 name={member.memberName}
@@ -55,7 +62,7 @@ export default function About({ preview, teamMembers, description, footer }) {
               />
             })}
           </div>
-          
+
         </Container>
       </Layout>
     </>

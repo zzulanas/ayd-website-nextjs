@@ -10,12 +10,17 @@ import { CMS_NAME } from '../lib/constants'
 
 export default function Residential({ preview, allProjects, footer }) {
   const heroProject = allProjects[0]
+  const title = "Previous Work"
   // const morePosts = allPosts.slice(1)
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>Previous Work</title>
+          <title>{title}</title>
+          <meta
+            property="og:image"
+            content={$`*.vercel.app/api/og?title=${title}`}
+          />
         </Head>
         <Container>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Previous Work"} />}

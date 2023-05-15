@@ -17,7 +17,7 @@ import DateComponent from '../../components/date'
 export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
   const router = useRouter()
 
-  if(router.isFallback){
+  if (router.isFallback) {
     return <h1>Loading…</h1>
   }
 
@@ -39,7 +39,11 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
             <article>
               <Head>
                 <title>
-                  {project.title} | AyD
+                  <title>{title} | AyD </title>
+                  <meta
+                    property="og:image"
+                    content={$`*.vercel.app/api/og?title=${title}?category=${project.category}`}
+                  />
                 </title>
                 <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
               </Head>
@@ -50,12 +54,12 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
               /> */}
 
 
-              <PostBody content={project.content} images={images} project={project} fiveXThousandImage={fiveXThousandImage}/>
+              <PostBody content={project.content} images={images} project={project} fiveXThousandImage={fiveXThousandImage} />
             </article>
 
             <SectionSeparator />
             {moreProjects && moreProjects.length > 0 && (
-              <MoreStories projects={moreProjects} pageName={"More Projects"}/>
+              <MoreStories projects={moreProjects} pageName={"More Projects"} />
             )}
           </>
         )}
@@ -69,11 +73,11 @@ export async function getStaticProps({ params, preview = false }) {
   const footer = await getFooterData()
   let fiveXThousandImage = data.project.projectImagesCollection.items[0]
   data.project.projectImagesCollection.items.forEach((image, idx) => {
-  if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')){
-    fiveXThousandImage = image
-    data.project.projectImagesCollection.items.splice(idx, 1)
-  }
-})
+    if (image.contentfulMetadata.tags.some(tag => tag.id === 'size500x1000')) {
+      fiveXThousandImage = image
+      data.project.projectImagesCollection.items.splice(idx, 1)
+    }
+  })
   return {
     props: {
       preview,
