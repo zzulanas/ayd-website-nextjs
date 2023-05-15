@@ -14,7 +14,7 @@ import { CMS_NAME } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
 import DateComponent from '../../components/date'
 
-export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer }) {
+export default function Post({ project, moreProjects, preview, fiveXThousandImage, footer, title }) {
   const router = useRouter()
 
   if (router.isFallback) {
@@ -38,13 +38,11 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
           <>
             <article>
               <Head>
-                <title>
-                  <title>{project.title} | AyD</title>
-                  <meta
-                    property="og:image"
-                    content={`*.vercel.app/api/og?title=${project.title}`}
-                  />
-                </title>
+                <title>{title} | AyD</title>
+                <meta
+                  property="og:image"
+                  content={`*.vercel.app/api/og?title=${title}&category=${project.category}`}
+                />
                 <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
               </Head>
               {/* <PostHeader
@@ -82,6 +80,7 @@ export async function getStaticProps({ params, preview = false }) {
     props: {
       preview,
       project: data?.project ?? null,
+      title: data?.project?.title ?? null,
       moreProjects: data?.moreProjects ?? null,
       fiveXThousandImage: fiveXThousandImage ?? null,
       footer: footer ?? null,

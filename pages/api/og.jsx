@@ -12,11 +12,11 @@ export default function handler(request) {
         const hasTitle = searchParams.has('title');
         const title = hasTitle
             ? searchParams.get('title')?.slice(0, 100)
-            : '';
+            : 'Arquitectura y Diseño';
 
         // ?category=Example
         const hasCategory = searchParams.has('category');
-        const category = isProject
+        const category = hasCategory
             ? searchParams.get('category')?.slice(0, 100)
             : '';
 
@@ -30,11 +30,10 @@ export default function handler(request) {
                         flexDirection: 'column',
                         alignItems: 'flex-start',
                         justifyContent: 'center',
-                        background: "rgb(255,255,255)",
-                        background: "linear-gradient(98deg, rgba(255,255,255,1) 0%, rgba(226,224,224,1) 65%, rgba(101,101,101,1) 95%)",
+                        backgroundImage: "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)",
                         fontSize: 32,
                         fontWeight: 600,
-                        padding: 40
+                        padding: 80
                     }}
                 >
                     <div
@@ -44,7 +43,7 @@ export default function handler(request) {
                             display: 'flex',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            backgroundColor: 'black',
+                            background: 'black',
                             borderRadius: '90%',
                             padding: '40px',
                             color: 'white',
@@ -57,14 +56,16 @@ export default function handler(request) {
                             AyD
                         </span>
                     </div>
-                    <div style={{ marginTop: 50 }}>{title}</div>
-                    <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
+                    <div style={{ marginLeft: 20, display: "flex", flexDirection: "column" }}>
+                        <div style={{ marginTop: 50, fontSize: "45px" }}>{title}</div>
+                        <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
+                    </div>
                 </div>
 
 
             ),
             {
-                width: 1200,
+                width: 1060,
                 height: 630,
             },
         );
