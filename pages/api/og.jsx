@@ -5,9 +5,6 @@ export const config = {
 };
 
 export default function handler(request) {
-    console.log(request.url)
-    console.log(imageUrl)
-    console.log(decodeURIComponent(imageUrl))
     try {
         const { searchParams } = new URL(request.url);
 
@@ -22,6 +19,13 @@ export default function handler(request) {
         const imageUrl = searchParams.has('imageUrl')
             ? searchParams.get('imageUrl')?.slice(0, 300)
             : null;
+
+        if (imageUrl != null) {
+            console.log(request.url)
+            console.log(imageUrl)
+            console.log(decodeURIComponent(imageUrl))
+        }
+
 
         return new ImageResponse(
             (
