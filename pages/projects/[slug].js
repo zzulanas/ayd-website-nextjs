@@ -41,8 +41,8 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
                 <title>{title} | AyD</title>
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={OG_DESCRIPTION} />
-                <meta property="og:url" content={`${process.env.VERCEL_URL}/projects/${project.slug}`} />
-                <meta property="og:image" content={`${process.env.VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
+                <meta property="og:url" content={`https://${process.env.VERCEL_URL}/projects/${project.slug}`} />
+                <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
               </Head>
               {/* <PostHeader
                 title={project.title}

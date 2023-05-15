@@ -31,8 +31,8 @@ export default function About({ preview, teamMembers, description, footer }) {
           <title>{title} | AyD</title>
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
-          <meta property="og:url" content={`${process.env.VERCEL_URL}/about`} />
-          <meta property="og:image" content={`${process.env.VERCEL_URL}/api/og?title=${title}`} />
+          <meta property="og:url" content={`https://${process.env.VERCEL_URL}/about`} />
+          <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}`} />
         </Head>
         <Container>
           <div className="grid grid-cols-1">
