@@ -5,6 +5,9 @@ export const config = {
 };
 
 export default function handler(request) {
+    console.log(request.url)
+    console.log(imageUrl)
+    console.log(decodeURIComponent(imageUrl))
     try {
         const { searchParams } = new URL(request.url);
 
