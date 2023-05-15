@@ -16,11 +16,12 @@ export default function Residential({ preview, allProjects, footer }) {
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>{title}</title>
-          <meta
-            property="og:image"
-            content={`${process.env.BASE_URL}/api/og?title=${title}`}
-          />
+          <title>{title} | AyD</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={project.description} />
+          <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/projects/${project.slug}`} />
+          <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
+          <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
         </Head>
         <Container>
           {allProjects.length > 0 && <MoreStories projects={allProjects} pageName={"Cultural Projects"} />}

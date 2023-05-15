@@ -5,7 +5,7 @@ import markdownStyles from "../components/markdown-styles.module.css"
 import Layout from '../components/layout'
 import { getAboutDescription, getAllTeamMembers, getFooterData } from '../lib/api'
 import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
+import { CMS_NAME, OG_DESCRIPTION } from '../lib/constants'
 import Avatar from '../components/avatar'
 import SectionSeparator from '../components/section-separator'
 
@@ -28,11 +28,11 @@ export default function About({ preview, teamMembers, description, footer }) {
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
-          <title>{title}</title>
-          <meta
-            property="og:image"
-            content={`${process.env.BASE_URL}/api/og?title=${title}`}
-          />
+          <title>{title} | AyD</title>
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={OG_DESCRIPTION} />
+          <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/projects/${project.slug}`} />
+          <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
         </Head>
         <Container>
           <div className="grid grid-cols-1">

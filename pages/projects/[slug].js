@@ -10,7 +10,7 @@ import SectionSeparator from '../../components/section-separator'
 import Layout from '../../components/layout'
 import { getAllProjectsWithSlug, getFooterData, getProjectAndMoreProjects } from '../../lib/api'
 import PostTitle from '../../components/post-title'
-import { CMS_NAME } from '../../lib/constants'
+import { CMS_NAME, OG_DESCRIPTION } from '../../lib/constants'
 import ContentfulImage from '../../components/contentful-image'
 import DateComponent from '../../components/date'
 
@@ -39,11 +39,10 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
             <article>
               <Head>
                 <title>{title} | AyD</title>
-                <meta
-                  property="og:image"
-                  content={`${process.env.BASE_URL}/api/og?title=${title}&category=${project.category}`}
-                />
-                <meta property="og:image" content={project.projectImagesCollection.items[0].url} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={OG_DESCRIPTION} />
+                <meta property="og:url" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/projects/${project.slug}`} />
+                <meta property="og:image" content={`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?title=${title}&category=${project.category}`} />
               </Head>
               {/* <PostHeader
                 title={project.title}
