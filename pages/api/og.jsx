@@ -18,7 +18,7 @@ export default function handler(request) {
 
         const imageUrl = searchParams.has('imageUrl')
             ? searchParams.get('imageUrl')?.slice(0, 100)
-            : "https://images.ctfassets.net/1dot4nwylomy/1c28w3Ck9Uy9mHzlWc8gkT/32ca18d06b7f16219e597bd56243dbd5/Site_Plan-01_WEB.jpg?w=640&q=100";
+            : null;
 
         return new ImageResponse(
             (
@@ -44,7 +44,7 @@ export default function handler(request) {
                             }}>
                             AyD
                         </span>
-                        <div style={{ marginLeft: 20, display: "flex", flexDirection: "column" }}>
+                        <div style={{ display: "flex", flexDirection: "column" }}>
                             <div style={{ marginTop: 50, fontSize: "45px" }}>{title}</div>
                             <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
                         </div>
