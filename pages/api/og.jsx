@@ -8,10 +8,16 @@ export default function handler(request) {
     try {
         const { searchParams } = new URL(request.url);
 
-        // /projects/
-        const isProject = searchParams.has('projects');
-        const title = isProject
-            ? searchParams.get('projects')?.slice(0, 100)
+        // ?title=Hello%20World&category=Example
+        const hasTitle = searchParams.has('title');
+        const title = hasTitle
+            ? searchParams.get('title')?.slice(0, 100)
+            : '';
+
+        // ?category=Example
+        const hasCategory = searchParams.has('category');
+        const category = isProject
+            ? searchParams.get('category')?.slice(0, 100)
             : '';
 
         return new ImageResponse(
@@ -51,8 +57,8 @@ export default function handler(request) {
                             AyD
                         </span>
                     </div>
-                    <div style={{ marginTop: 50 }}>Casa De Carmen 2.0</div>
-                    <div style={{ marginTop: 5, color: "gray" }}>Residential</div>
+                    <div style={{ marginTop: 50 }}>{title}</div>
+                    <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
                 </div>
 
 
