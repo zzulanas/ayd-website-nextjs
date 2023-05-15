@@ -78,7 +78,7 @@ export async function getStaticProps({ params, preview = false }) {
         case "categoryCultural":
           return "Cultural"
         default:
-          return null
+          return "Project"
       }
     }
     )
