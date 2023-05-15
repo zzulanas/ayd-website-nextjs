@@ -51,7 +51,7 @@ export default function handler(request) {
                     </div>
                     {imageUrl &&
                         <div style={{ width: '500px', height: '500px', borderRadius: '50%', overflow: 'hidden', display: "flex" }}>
-                            <img src={imageUrl} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <img src={decodeURIComponent(imageUrl)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                     }
                 </div>
