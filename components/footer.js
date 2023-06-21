@@ -17,12 +17,15 @@ export default function Footer(data) {
               <h4 className='text-1.5xl text-gray-400 hover:underline'><a href={'https://www.google.com/maps/search/?api=1&query=' + data.data.footer.address}>{data.data.footer.address}</a></h4>
             </div>
           </div>
-          <div className='self-start py-10'>
-            {data.data.footer.certifications.map((certification, index) => (
-              <div>
-                <span key={index} className='text-gray-400 md:text-left'> {certification} </span> <br />
-              </div>
-            ))}
+          <div className='self-start py-10 flex'>
+            <span className='text-gray-400'>a&nbsp;</span>
+            <div>
+              {data.data.footer.certifications.map((certification, index) => (
+                <div>
+                  <span key={index} className='text-gray-400 md:text-left'> {certification} </span> <br />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

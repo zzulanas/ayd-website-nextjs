@@ -25,16 +25,6 @@ export default function Index({ preview, pictures, footer }) {
         <Container>
           <Intro />
           <Gallery pictures={pictures} />
-          {/* {heroProject && (
-            <HeroPost
-              title={heroProject.title}
-              coverImage={heroProject.projectImagesCollection.items[0]}
-              date={heroProject.dateCreated}
-              slug={heroProject.slug}
-              excerpt={heroProject.tagLine}
-            />
-          )}
-          {moreProjects.length > 0 && <MoreStories projects={moreProjects} pageName={"Other"}/>} */}
         </Container>
       </Layout>
     </>
