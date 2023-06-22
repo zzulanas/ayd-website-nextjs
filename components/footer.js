@@ -8,7 +8,7 @@ export default function Footer(data) {
           <div className="basis-3/8 py-10">
             <h1 className="text-4xl tracking-wider font-light">arquitectura y diseño</h1>
             <h3 className="text-2xl font-medium text-slate-500 tracking-widest">roberto sheinberg</h3>
-            <div className='flex justify-between'><h3 className='text-slate-400 font-thin'>se habla ingles</h3><span className='text-gray-400 self-end invisible md:visible'>a&nbsp;</span></div>
+            <div className='flex justify-between'><h3 className='text-slate-400 font-thin'>se habla ingles</h3><span className='text-gray-400 self-end invisible md:visible'>a&nbsp;&nbsp;</span></div>
             <div className='py-10'>
               <h4 className='text-1.5xl  text-left'><a href={"mailto:" + data.data.footer.infoEmail} className='hover:underline'>{data.data.footer.infoEmail}</a></h4>
               <h4 className='text-1.5xl text-gray-400 text-left'><a href={"tel:" + data.data.footer.phoneNumber} className='hover:underline'>{data.data.footer.phoneNumber}</a></h4>
