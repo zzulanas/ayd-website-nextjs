@@ -34,7 +34,7 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
           <>
             <article>
               <Head>
-                <title>{title} | AyD</title>
+                <title>{title} | Arq y Di</title>
                 <meta name="robots" content="all" />
                 <meta name="title" content={title} />
                 <meta name="description" content={project.content.json.content.slice(0, 2)} />

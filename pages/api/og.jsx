@@ -1,66 +1,65 @@
 import { ImageResponse } from '@vercel/og';
 
 export const config = {
-    runtime: 'experimental-edge',
+    runtime: 'edge',
 };
 
 export default function handler(request) {
     try {
         const { searchParams } = new URL(request.url);
 
-        const title = searchParams.has('title')
+        // ?title=<title>
+        const hasTitle = searchParams.has('title');
+        const title = hasTitle
             ? searchParams.get('title')?.slice(0, 100)
-            : 'Arquitectura y Diseño';
-
-        const category = searchParams.has('category')
-            ? searchParams.get('category')?.slice(0, 100)
-            : '';
-
-        const imageUrl = searchParams.has('imageUrl')
-            ? searchParams.get('imageUrl')?.slice(0, 300)
-            : null;
-
-        if (imageUrl != null) {
-            console.log(request.url)
-            console.log(imageUrl)
-            console.log(decodeURIComponent(imageUrl))
-        }
-
+            : 'My default title';
 
         return new ImageResponse(
             (
                 <div
                     style={{
+                        backgroundColor: 'black',
+                        backgroundSize: '150px 150px',
                         height: '100%',
                         width: '100%',
                         display: 'flex',
-                        flexDirection: 'row',
+                        textAlign: 'center',
                         alignItems: 'center',
-                        justifyContent: 'space-between',
-                        backgroundImage: "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)",
-                        fontSize: 32,
-                        fontWeight: 600,
-                        fontFamily: 'sans-serif',
-                        padding: 80
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        flexWrap: 'nowrap',
                     }}
                 >
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                        <span
-                            style={{
-                                fontSize: "90px",
-                            }}>
-                            AyD
-                        </span>
-                        <div style={{ display: "flex", flexDirection: "column" }}>
-                            <div style={{ marginTop: 50, fontSize: "45px" }}>{title}</div>
-                            <div style={{ marginTop: 5, color: "gray" }}>{category}</div>
-                        </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            justifyItems: 'center',
+                        }}
+                    >
+                        <img
+                            alt="Vercel"
+                            height={200}
+                            src="data:image/svg+xml,%3Csvg width='116' height='100' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M57.5 0L115 100H0L57.5 0z' /%3E%3C/svg%3E"
+                            style={{ margin: '0 30px' }}
+                            width={232}
+                        />
                     </div>
-                    {imageUrl &&
-                        <div style={{ width: '500px', height: '500px', borderRadius: '50%', overflow: 'hidden', display: "flex" }}>
-                            <img src={decodeURIComponent(imageUrl)} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        </div>
-                    }
+                    <div
+                        style={{
+                            fontSize: 60,
+                            fontStyle: 'normal',
+                            letterSpacing: '-0.025em',
+                            color: 'white',
+                            marginTop: 30,
+                            padding: '0 120px',
+                            lineHeight: 1.4,
+                            whiteSpace: 'pre-wrap',
+                        }}
+                    >
+                        {title}
+                    </div>
                 </div>
             ),
             {
