@@ -10,7 +10,7 @@ import { sortAllProjects } from '../lib/utils'
 
 export default function Residential({ preview, allProjects, footer }) {
   const title = "Commercial Projects"
-  const description = "Arq Y Di Commercial Projects"
+  const meta_description = "Arq Y Di Commercial Projects"
   return (
     <>
       <Layout preview={preview} footer={footer}>
@@ -18,7 +18,7 @@ export default function Residential({ preview, allProjects, footer }) {
           <title>{title} | AyD</title>
           <meta name="robots" content="all" />
           <meta name="title" content={title} />
-          <meta name="description" content={description} />
+          <meta name="description" content={meta_description} />
           <meta name="keywords" content="Architecture, Design, Commercial, Projects, Arq Y Di" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />

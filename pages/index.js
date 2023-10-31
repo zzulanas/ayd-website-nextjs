@@ -11,7 +11,7 @@ import Gallery from '../components/gallery'
 export default function Index({ preview, pictures, footer }) {
 
   const title = "AyD Arquitectura y Diseño"
-  const description = "Arq Y Di is an architecture and design firm based in Los Angeles, California."
+  const meta_description = "Arq Y Di is an architecture and design firm based in Los Angeles, California."
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function Index({ preview, pictures, footer }) {
           <title>{title} | AyD</title>
           <meta name="robots" content="all" />
           <meta name="title" content={title} />
-          <meta name="description" content={description} />
+          <meta name="description" content={meta_description} />
           <meta name="keywords" content="Architecture, Design, Previous Work, Projects, Arq Y Di" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
