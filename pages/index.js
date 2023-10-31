@@ -10,7 +10,7 @@ import Gallery from '../components/gallery'
 
 export default function Index({ preview, pictures, footer }) {
 
-  const title = "AyD Arquitectura y Diseño"
+  const title = "Arq Y Di"
   const meta_description = "Arq Y Di is an architecture and design firm based in Los Angeles, California."
 
   return (
