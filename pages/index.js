@@ -25,7 +25,7 @@ export default function Index({ preview, pictures, footer }) {
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
           <meta property="og:url" content={`https://${process.env.VERCEL_URL}`} />
-          <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title=${title}`} />
+          <meta property="og:image" content={`https://${process.env.VERCEL_URL}/api/og?title="${title}"`} />
         </Head>
         <Container>
           <Intro />
