@@ -22,13 +22,17 @@ const customMarkdownOptions = (content) => ({
 
 export default function About({ preview, teamMembers, description, footer }) {
 
-  const title = "About AyD"
+  const title = "About Arq y Di"
+  const description = "Arqitectura Y Diseño is a full-service architecture and design firm based in Los Angeles, CA. We are a team of architects, designers, and artists who are passionate about creating spaces that are both functional and beautiful."
 
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
           <title>{title} | AyD</title>
+          <meta name="robots" content="all" />
+          <meta name="title" content={title} />
+          <meta name="description" content={description} />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
           <meta property="og:url" content={`https://${process.env.VERCEL_URL}/about`} />

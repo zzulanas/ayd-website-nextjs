@@ -11,12 +11,17 @@ import Gallery from '../components/gallery'
 export default function Index({ preview, pictures, footer }) {
 
   const title = "AyD Arquitectura y Diseño"
+  const description = "Arq Y Di is an architecture and design firm based in Los Angeles, California."
 
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
           <title>{title} | AyD</title>
+          <meta name="robots" content="all" />
+          <meta name="title" content={title} />
+          <meta name="description" content={description} />
+          <meta name="keywords" content="Architecture, Design, Previous Work, Projects, Arq Y Di" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
           <meta property="og:url" content={`https://${process.env.VERCEL_URL}`} />

@@ -35,6 +35,10 @@ export default function Post({ project, moreProjects, preview, fiveXThousandImag
             <article>
               <Head>
                 <title>{title} | AyD</title>
+                <meta name="robots" content="all" />
+                <meta name="title" content={title} />
+                <meta name="description" content={project.content} />
+                <meta name="keywords" content="Architecture, Design, Los Angeles, Projects, Arq Y Di" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={OG_DESCRIPTION} />
                 <meta property="og:url" content={`https://${process.env.VERCEL_URL}/projects/${slug}`} />

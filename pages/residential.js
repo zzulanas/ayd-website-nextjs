@@ -10,11 +10,16 @@ import { sortAllProjects } from '../lib/utils'
 
 export default function Residential({ preview, allProjects, footer }) {
   const title = "Residential Projects"
+  const description = "Arq Y Di Residential Projects"
   return (
     <>
       <Layout preview={preview} footer={footer}>
         <Head>
           <title>{title} | AyD </title>
+          <meta name="robots" content="all" />
+          <meta name="title" content={title} />
+          <meta name="description" content={description} />
+          <meta name="keywords" content="Architecture, Design, Residential, Projects, Arq Y Di" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={OG_DESCRIPTION} />
           <meta property="og:url" content={`https://${process.env.VERCEL_URL}/residential`} />
