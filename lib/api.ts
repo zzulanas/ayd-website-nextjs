@@ -1,3 +1,16 @@
+import { TypeFooter, TypeFooterFields } from "../types/contentful";
+
+export type SimplifiedFooter = {
+  sys?: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    // ... (any other properties from sys you need)
+  };
+  fields: TypeFooterFields;
+};
+
 const POST_GRAPHQL_FIELDS = `
 slug
 title
@@ -26,7 +39,7 @@ content {
     }
   }
 }
-`
+`;
 
 const PROJECT_GRAPHQL_FIELDS = `
 title
@@ -54,7 +67,7 @@ contentfulMetadata{
     id
   }
 }
-`
+`;
 
 const INDIVIDUAL_PROJECT_GRAPHQL_FIELDS = `
 title
@@ -86,83 +99,102 @@ contentfulMetadata{
     id
   }
 }
-`
+`;
 
 async function fetchGraphQL(query, preview = false) {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${preview
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${
+          preview
             ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
             : process.env.CONTENTFUL_ACCESS_TOKEN
-          }`,
+        }`,
       },
       body: JSON.stringify({ query }),
     }
-  ).then((response) => response.json())
+  ).then((response) => response.json());
 }
 
 function extractPost(fetchResponse) {
-  return fetchResponse?.data?.postCollection?.items?.[0]
+  return fetchResponse?.data?.postCollection?.items?.[0];
 }
 
 function extractPostEntries(fetchResponse) {
-  return fetchResponse?.data?.postCollection?.items
+  return fetchResponse?.data?.postCollection?.items;
 }
 
 function extractProjectsData(fetchResponse) {
-  return fetchResponse?.data?.projectCollection?.items
+  return fetchResponse?.data?.projectCollection?.items;
 }
 
 function extractProject(fetchResponse) {
-  return fetchResponse?.data?.projectCollection?.items?.[0]
+  return fetchResponse?.data?.projectCollection?.items?.[0];
 }
 
 function extractFooter(fetchResponse) {
-  return fetchResponse?.data?.footerCollection?.items?.[0]
+  return {
+    sys: {
+      id: "",
+      type: "",
+      createdAt: "",
+      updatedAt: "",
+    },
+    fields: fetchResponse?.data?.footerCollection?.items?.[0] || {
+      address: null,
+      phoneNumber: null,
+      infoEmail: null,
+      certifications: [],
+    },
+  };
 }
 
 function extractTag(fetchResponse) {
-  const tags = fetchResponse?.data?.projectCollection?.items?.[0]?.contentfulMetadata?.tags
-  const categoryTag = tags.find(tag => tag.id.includes("category"))
-  return categoryTag
+  const tags =
+    fetchResponse?.data?.projectCollection?.items?.[0]?.contentfulMetadata
+      ?.tags;
+  const categoryTag = tags.find((tag) => tag.id.includes("category"));
+  return categoryTag;
 }
 
 function extractPictures(fetchResponse) {
-  const returnArray = []
-  const res = fetchResponse?.data?.projectCollection?.items
-  res.forEach(item => {
-    const imageArray = item?.projectImagesCollection?.items
-    const homepageImageUrl = imageArray.find(image => image?.contentfulMetadata?.tags.some(tag => tag.id === "homepageImage"))?.url ?? item?.bannerImage?.url
+  const returnArray = [];
+  const res = fetchResponse?.data?.projectCollection?.items;
+  res.forEach((item) => {
+    const imageArray = item?.projectImagesCollection?.items;
+    const homepageImageUrl =
+      imageArray.find((image) =>
+        image?.contentfulMetadata?.tags.some(
+          (tag) => tag.id === "homepageImage"
+        )
+      )?.url ?? item?.bannerImage?.url;
     returnArray.push({
-      homepageImageUrl: homepageImageUrl, slug: item?.slug, title: item?.title, bannerImage: item?.bannerImage, tags: item?.contentfulMetadata?.tags, homesort: item?.contentfulMetadata?.tags.find((element) => {
-        if (element.id.includes("homesort")) {
-          return element.id
-        }
-      }).id.replace('homesort', '')
-    })
-  })
-  return returnArray
+      homepageImageUrl: homepageImageUrl,
+      slug: item?.slug,
+      title: item?.title,
+      bannerImage: item?.bannerImage,
+      tags: item?.contentfulMetadata?.tags,
+      homesort: item?.contentfulMetadata?.tags
+        .find((element) => {
+          if (element.id.includes("homesort")) {
+            return element.id;
+          }
+        })
+        .id.replace("homesort", ""),
+    });
+  });
+  return returnArray;
 }
 
 function extractMembers(fetchResponse) {
-  return fetchResponse?.data?.teamMemberCollection?.items
+  return fetchResponse?.data?.teamMemberCollection?.items;
 }
 
 function extractDescription(fetchResponse) {
-  return fetchResponse?.data?.aboutPage?.content
-}
-
-export async function extract500x1000Image(images) {
-  // const images = fetchResponse?.data?.projectImagesCollection?.items
-  for (const i in images) {
-    if (i.contentfulMetadata.tags.includes('size500x1000')) {
-      return i
-    }
-  }
+  return fetchResponse?.data?.aboutPage?.content;
 }
 
 export async function getPreviewPostBySlug(slug) {
@@ -175,8 +207,8 @@ export async function getPreviewPostBySlug(slug) {
       }
     }`,
     true
-  )
-  return extractPost(entry)
+  );
+  return extractPost(entry);
 }
 
 export async function getAllProjectsByTag(tag) {
@@ -188,8 +220,8 @@ export async function getAllProjectsByTag(tag) {
         }
       }
     }`
-  )
-  return extractProjectsData(projects)
+  );
+  return extractProjectsData(projects);
 }
 
 export async function getAllProjectsWithSlug() {
@@ -201,8 +233,8 @@ export async function getAllProjectsWithSlug() {
         }
       }
     }`
-  )
-  return extractProjectsData(projects)
+  );
+  return extractProjectsData(projects);
 }
 
 export async function getProjectBySlug(slug) {
@@ -213,9 +245,9 @@ export async function getProjectBySlug(slug) {
           ${INDIVIDUAL_PROJECT_GRAPHQL_FIELDS}
         }
       }
-    }`,
-  )
-  return extractProject(project)
+    }`
+  );
+  return extractProject(project);
 }
 
 export async function getAllPostsWithSlug() {
@@ -227,22 +259,22 @@ export async function getAllPostsWithSlug() {
         }
       }
     }`
-  )
-  return extractPostEntries(entries)
+  );
+  return extractPostEntries(entries);
 }
 
 export async function getAllPostsForHome(preview) {
   const entries = await fetchGraphQL(
     `query {
-      postCollection(order: date_DESC, preview: ${preview ? 'true' : 'false'}) {
+      postCollection(order: date_DESC, preview: ${preview ? "true" : "false"}) {
         items {
           ${POST_GRAPHQL_FIELDS}
         }
       }
     }`,
     preview
-  )
-  return extractPostEntries(entries)
+  );
+  return extractPostEntries(entries);
 }
 
 export async function getAllPicturesForGallery() {
@@ -273,8 +305,8 @@ export async function getAllPicturesForGallery() {
         }
       }
     }`
-  )
-  return extractPictures(pictures)
+  );
+  return extractPictures(pictures);
 }
 
 export async function getAllProjectsForHome() {
@@ -286,8 +318,8 @@ export async function getAllProjectsForHome() {
         }
       }
     }`
-  )
-  return extractPostEntries(entries)
+  );
+  return extractPostEntries(entries);
 }
 
 export async function getAllTeamMembers() {
@@ -303,8 +335,8 @@ export async function getAllTeamMembers() {
         }
       }
     }`
-  )
-  return extractMembers(members)
+  );
+  return extractMembers(members);
 }
 
 export async function getAboutDescription() {
@@ -316,15 +348,16 @@ export async function getAboutDescription() {
         }
       }
     }`
-  )
+  );
 
-  return extractDescription(description)
+  return extractDescription(description);
 }
 
 export async function getPostAndMorePosts(slug, preview) {
   const entry = await fetchGraphQL(
     `query {
-      postCollection(where: { slug: "${slug}" }, preview: ${preview ? 'true' : 'false'
+      postCollection(where: { slug: "${slug}" }, preview: ${
+      preview ? "true" : "false"
     }, limit: 1) {
         items {
           ${POST_GRAPHQL_FIELDS}
@@ -332,10 +365,11 @@ export async function getPostAndMorePosts(slug, preview) {
       }
     }`,
     preview
-  )
+  );
   const entries = await fetchGraphQL(
     `query {
-      postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${preview ? 'true' : 'false'
+      postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
+      preview ? "true" : "false"
     }, limit: 2) {
         items {
           ${POST_GRAPHQL_FIELDS}
@@ -343,11 +377,11 @@ export async function getPostAndMorePosts(slug, preview) {
       }
     }`,
     preview
-  )
+  );
   return {
     post: extractPost(entry),
     morePosts: extractPostEntries(entries),
-  }
+  };
 }
 
 export async function getProjectAndMoreProjects(slug) {
@@ -359,8 +393,8 @@ export async function getProjectAndMoreProjects(slug) {
         }
       }
     }`
-  )
-  const tag = extractTag(entry).id
+  );
+  const tag = extractTag(entry).id;
   const entries = await fetchGraphQL(
     `query {
       projectCollection(where: { AND: [{ slug_not_in: "${slug}" }, {contentfulMetadata: {tags_exists: true tags:{id_contains_some: ["${tag}"]}}}] }, limit: 3) {
@@ -369,14 +403,16 @@ export async function getProjectAndMoreProjects(slug) {
         }
       }
     }`
-  )
+  );
   return {
     project: extractProject(entry),
     moreProjects: extractProjectsData(entries),
-  }
+  };
 }
 
-export async function getFooterData() {
+export async function getFooterData(): Promise<{
+  footer: SimplifiedFooter | null;
+}> {
   const footerCollection = await fetchGraphQL(
     `query footerCollectionQuery {
       footerCollection {
@@ -388,8 +424,8 @@ export async function getFooterData() {
         }
       }
     }`
-  )
+  );
   return {
-    footer: extractFooter(footerCollection)
-  }
+    footer: extractFooter(footerCollection),
+  };
 }

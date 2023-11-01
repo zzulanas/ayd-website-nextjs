@@ -12,9 +12,13 @@ export default function handler(request) {
             ? searchParams.get('title')?.slice(0, 100)
             : 'Arquitectura y Diseño';
 
-        const category = searchParams.has('category')
+        let category = searchParams.has('category')
             ? searchParams.get('category')?.slice(0, 100)
             : '';
+
+        if (category == null) {
+            category = 'Arquitectura y Diseño'
+        }
 
         const imageUrl = searchParams.has('imageUrl')
             ? searchParams.get('imageUrl')?.slice(0, 300)
