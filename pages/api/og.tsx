@@ -60,7 +60,7 @@ export default function handler(request) {
                 fontSize: "90px",
               }}
             >
-              AyD
+              Arq y Di
             </span>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <div style={{ marginTop: 50, fontSize: "45px" }}>{title}</div>

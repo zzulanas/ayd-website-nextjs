@@ -11,7 +11,7 @@ export default function Index({ preview, pictures, footer }) {
     description:
       "Arq Y Di is an architecture and design firm based in Los Angeles, California.",
     url: `https://${process.env.VERCEL_URL}`,
-    imageUrl: `https://${process.env.VERCEL_URL}/api/og?title="${title}`,
+    imageUrl: `https://${process.env.VERCEL_URL}/api/og`,
   };
 
   return (
