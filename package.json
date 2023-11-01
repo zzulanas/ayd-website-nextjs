@@ -4,7 +4,9 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "setup": "node ./contentful/setup.js"
+    "setup": "node ./contentful/setup.js",
+    "cf-export": "contentful space export --config contentful/export-config.json --management-token $CONTENTFUL_ACCESS_TOKEN --space-id $CONTENTFUL_SPACE_ID",
+    "cf-generate-types": "cf-content-types-generator contentful/export.json --out types/contentful"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.4.0",
@@ -20,9 +22,14 @@
     "yet-another-react-lightbox": "^2.2.2"
   },
   "devDependencies": {
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.2.33",
     "autoprefixer": "10.4.2",
+    "cf-content-types-generator": "^2.12.9",
+    "contentful-cli": "^3.1.7",
     "contentful-import": "^7.8.7",
     "postcss": "8.4.5",
-    "tailwindcss": "^3.0.15"
+    "tailwindcss": "^3.0.15",
+    "typescript": "^5.2.2"
   }
 }
