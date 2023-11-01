@@ -4,7 +4,7 @@ export interface TypeAboutPageFields {
   fields: {
     content?: EntryFields.RichText;
   };
-  contentTypeId?: string;
+  contentTypeId: string;
 }
 
 export type TypeAboutPage = Entry<TypeAboutPageFields>;
