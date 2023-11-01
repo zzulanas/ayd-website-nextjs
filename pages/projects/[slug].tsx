@@ -1,5 +1,4 @@
 import ErrorPage from "next/error";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
@@ -12,7 +11,6 @@ import {
   getFooterData,
   getProjectAndMoreProjects,
 } from "../../lib/api";
-import { OG_DESCRIPTION } from "../../lib/constants";
 
 export default function Post({
   project,
@@ -30,7 +28,7 @@ export default function Post({
   // Construct the pageMeta object for the specific project page
   const pageMeta = {
     title: `${title} | Arq y Di`,
-    description: project?.content?.json?.content.slice(0, 2),
+    description: project?.tagline,
     url: `https://${process.env.VERCEL_URL}/projects/${slug}`,
     imageUrl: `https://${process.env.VERCEL_URL}/api/og?title=${title}&category=${category}&imageUrl=${bannerImageUrl}`,
   };
