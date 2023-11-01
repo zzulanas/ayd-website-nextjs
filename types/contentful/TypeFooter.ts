@@ -7,6 +7,7 @@ export interface TypeFooterFields {
     infoEmail?: EntryFields.Symbol;
     certifications?: EntryFields.Symbol[];
   };
+  contentTypeId: string;
 }
 
 export type TypeFooter = Entry<TypeFooterFields>;
