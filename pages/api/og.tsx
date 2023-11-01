@@ -4,6 +4,8 @@ export const config = {
   runtime: "experimental-edge",
 };
 
+// TODO: implement random backgrounds https://prismic.io/blog/vercel-og-image-randomized#randomizing-our-og-image-background
+
 export default function handler(request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -40,8 +42,7 @@ export default function handler(request) {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-            backgroundImage:
-              "linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)",
+            backgroundImage: "linear-gradient(to top, #dfe9f3 0%, white 100%)",
             fontSize: 32,
             fontWeight: 600,
             fontFamily: "sans-serif",
@@ -80,7 +81,7 @@ export default function handler(request) {
               <img
                 src={decodeURIComponent(imageUrl)}
                 alt={title}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                style={{ width: "160%", height: "100%", objectFit: "cover" }}
               />
             </div>
           )}

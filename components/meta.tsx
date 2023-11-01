@@ -11,7 +11,7 @@ interface MetaProps {
 export default function Meta({ title, description, imageUrl, url }: MetaProps) {
   return (
     <Head>
-      <title>{`${title} | Arq Y Di` || "Arq Y Di"}</title>
+      <title>{`${title} | Arq Y Di` || "AyD"}</title>
       <meta
         name="description"
         content={

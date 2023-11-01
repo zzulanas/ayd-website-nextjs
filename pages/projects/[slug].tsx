@@ -32,6 +32,7 @@ export default function Post({
     url: `https://${process.env.VERCEL_URL}/projects/${slug}`,
     imageUrl: `https://${process.env.VERCEL_URL}/api/og?title=${title}&category=${category}&imageUrl=${bannerImageUrl}`,
   };
+  console.log(pageMeta);
 
   if (router.isFallback) {
     return <h1>Loading…</h1>;
