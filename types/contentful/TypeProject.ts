@@ -1,6 +1,7 @@
 import type { Asset, Entry, EntryFields } from "contentful";
 
 export interface TypeProjectFields {
+  fields: {
     title: EntryFields.Symbol;
     projectSubtitle?: EntryFields.Symbol;
     projectLocation: EntryFields.Symbol;
@@ -10,6 +11,8 @@ export interface TypeProjectFields {
     dateCreated: EntryFields.Date;
     projectTagline: EntryFields.Symbol;
     content: EntryFields.RichText;
+  };
+  contentTypeId: string;
 }
 
 export type TypeProject = Entry<TypeProjectFields>;
