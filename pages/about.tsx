@@ -78,7 +78,10 @@ export default function About({ preview, teamMembers, description, footer }) {
 export async function getStaticProps({ preview = false }) {
   const teamMembers = (await getAllTeamMembers()) ?? [];
   const description = (await getAboutDescription()) ?? [];
-  const footer = (await getFooterData()) ?? null;
+  let footer = await getFooterData();
+  if (!footer || !footer.footer) {
+    footer = { ...footer, footer: null }; // Setting the inner footer to null if it's undefined
+  }
   return {
     props: { preview, teamMembers, description, footer },
     revalidate: 30,

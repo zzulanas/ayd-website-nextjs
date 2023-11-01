@@ -35,7 +35,10 @@ export default function Residential({ preview, allProjects, footer }) {
 export async function getStaticProps({ preview = false }) {
   const allProjects = (await getAllProjectsByTag("categoryCommercial")) ?? [];
   sortAllProjects(allProjects, "commercialSort");
-  const footer = await getFooterData();
+  let footer = await getFooterData();
+  if (!footer || !footer.footer) {
+    footer = { ...footer, footer: null }; // Setting the inner footer to null if it's undefined
+  }
   return {
     props: { preview, allProjects, footer },
     revalidate: 30,

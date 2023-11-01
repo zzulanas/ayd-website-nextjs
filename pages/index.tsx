@@ -28,7 +28,10 @@ export default function Index({ preview, pictures, footer }) {
 
 export async function getStaticProps({ preview = false }) {
   const pictures = await getAllPicturesForGallery();
-  const footer = await getFooterData();
+  let footer = await getFooterData();
+  if (!footer || !footer.footer) {
+    footer = { ...footer, footer: null }; // Setting the inner footer to null if it's undefined
+  }
   pictures.sort((picA, picB) => {
     if (parseInt(picA.homesort) < parseInt(picB.homesort)) {
       return -1;

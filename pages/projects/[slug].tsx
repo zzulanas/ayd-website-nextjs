@@ -80,7 +80,10 @@ export default function Post({
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getProjectAndMoreProjects(params.slug);
-  const footer = await getFooterData();
+  let footer = await getFooterData();
+  if (!footer || !footer.footer) {
+    footer = { ...footer, footer: null }; // Setting the inner footer to null if it's undefined
+  }
   const category = ():
     | "Residential"
     | "Commercial"

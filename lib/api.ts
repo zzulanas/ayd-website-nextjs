@@ -1,3 +1,16 @@
+import { TypeFooter, TypeFooterFields } from "../types/contentful";
+
+export type SimplifiedFooter = {
+  sys?: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    // ... (any other properties from sys you need)
+  };
+  fields: TypeFooterFields;
+};
+
 const POST_GRAPHQL_FIELDS = `
 slug
 title
@@ -123,7 +136,20 @@ function extractProject(fetchResponse) {
 }
 
 function extractFooter(fetchResponse) {
-  return fetchResponse?.data?.footerCollection?.items?.[0];
+  return {
+    sys: {
+      id: "",
+      type: "",
+      createdAt: "",
+      updatedAt: "",
+    },
+    fields: fetchResponse?.data?.footerCollection?.items?.[0] || {
+      address: null,
+      phoneNumber: null,
+      infoEmail: null,
+      certifications: [],
+    },
+  };
 }
 
 function extractTag(fetchResponse) {
@@ -384,7 +410,9 @@ export async function getProjectAndMoreProjects(slug) {
   };
 }
 
-export async function getFooterData() {
+export async function getFooterData(): Promise<{
+  footer: SimplifiedFooter | null;
+}> {
   const footerCollection = await fetchGraphQL(
     `query footerCollectionQuery {
       footerCollection {

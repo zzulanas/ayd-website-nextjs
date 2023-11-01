@@ -25,7 +25,7 @@ export default function PostHeader({ title, coverImage, date }) {
         </div>
       </Container>
       <div className="flex mb-8 md:mb-16 sm:mx-0 relative">
-        <CoverImage title={title} url={coverImage.url} slug={undefined} />
+        <CoverImage title={title} url={coverImage.url} slug={null} />
         <ContentfulImage
           width={2000}
           height={1000}

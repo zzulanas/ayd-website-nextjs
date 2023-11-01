@@ -3,6 +3,7 @@ import Meta from "./meta";
 import Nav from "./nav";
 
 export default function Layout({ preview, children, footer, pageMeta }) {
+  console.log(footer);
   return (
     <>
       <Meta {...pageMeta} />
