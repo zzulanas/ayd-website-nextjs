@@ -26,11 +26,11 @@ export default function Meta({ title, description, imageUrl, url }: MetaProps) {
       <meta property="og:description" content={description || OG_DESCRIPTION} />
       <meta
         property="og:url"
-        content={url || `https://${process.env.OG_IMAGE_URL}`}
+        content={url || `https://arq-y-di.com`}
       />
       <meta
         property="og:image"
-        content={imageUrl || `https://${process.env.OG_IMAGE_URL}/api/og`}
+        content={imageUrl || `https://arq-y-di.com/api/og`}
       />
       <link
         rel="apple-touch-icon"
