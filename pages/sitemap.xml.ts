@@ -69,7 +69,7 @@ async function generateSitemap() {
     .map(
       (route) => `
       <url>
-        <loc>https://arq-y-di.com${route.path}</loc>
+        <loc>https://www.arq-y-di.com${route.path}</loc>
         <changefreq>daily</changefreq>
         <priority>${route.priority}</priority>
       </url>`
@@ -81,7 +81,7 @@ async function generateSitemap() {
     .map(
       (path) => `
       <url>
-        <loc>https://arq-y-di.com${path}</loc>
+        <loc>https://www.arq-y-di.com${path}</loc>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
       </url>`
