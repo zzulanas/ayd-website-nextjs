@@ -1,10 +1,10 @@
 import Container from "../components/container";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPicturesForGallery, getFooterData } from "../lib/api";
+import { getAllPicturesForGallery, getFooterData, getIntroActionItem } from "../lib/api";
 import Gallery from "../components/gallery";
 
-export default function Index({ preview, pictures, footer }) {
+export default function Index({ preview, pictures, footer, introActionItem }) {
   const title = "Arq Y Di";
   const pageMeta = {
     title: title,
@@ -18,7 +18,7 @@ export default function Index({ preview, pictures, footer }) {
     <>
       <Layout preview={preview} footer={footer} pageMeta={pageMeta}>
         <Container>
-          <Intro />
+          <Intro introActionItem={introActionItem} />
           <Gallery pictures={pictures} />
         </Container>
       </Layout>
@@ -28,6 +28,7 @@ export default function Index({ preview, pictures, footer }) {
 
 export async function getStaticProps({ preview = false }) {
   const pictures = await getAllPicturesForGallery();
+  const introActionItem = (await getIntroActionItem()) ?? null;
   let footer = await getFooterData();
   if (!footer || !footer.footer) {
     footer = { ...footer, footer: null }; // Setting the inner footer to null if it's undefined
@@ -42,7 +43,7 @@ export async function getStaticProps({ preview = false }) {
     return 0;
   });
   return {
-    props: { preview, pictures, footer },
+    props: { preview, pictures, footer, introActionItem },
     revalidate: 30,
   };
 }

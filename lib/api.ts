@@ -11,6 +11,11 @@ export type SimplifiedFooter = {
   fields: TypeFooterFields;
 };
 
+interface MainPageActionItem {
+  displayText: string;
+  link: string;
+}
+
 const POST_GRAPHQL_FIELDS = `
 slug
 title
@@ -197,6 +202,10 @@ function extractDescription(fetchResponse) {
   return fetchResponse?.data?.aboutPage?.content;
 }
 
+function extractMainPageActionItem(fetchResponse) {
+  return fetchResponse?.data?.mainPageActionItemCollection?.items?.[0];
+}
+
 export async function getPreviewPostBySlug(slug) {
   const entry = await fetchGraphQL(
     `query {
@@ -351,6 +360,22 @@ export async function getAboutDescription() {
   );
 
   return extractDescription(description);
+}
+
+export async function getIntroActionItem() {
+  // Don't change ID, should just be this one field that can be edited/updated
+  const item = await fetchGraphQL(
+    `query {
+      mainPageActionItemCollection(where: { sys: { id: "iDmccI5NTqAJz8um5PJlw" } }, limit: 1) {
+        items {
+          displayText
+          link
+        }
+      }
+    }`
+  );
+
+  return extractMainPageActionItem(item);
 }
 
 export async function getPostAndMorePosts(slug, preview) {
