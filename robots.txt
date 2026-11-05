@@ -1,5 +1,0 @@
-Allow: /api/og/*
-Allow: /api/sitemap
-
-User-agent: *
-Disallow:

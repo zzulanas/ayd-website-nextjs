@@ -1,36 +1,30 @@
 {
+  "name": "ayd-website",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "setup": "node ./contentful/setup.js",
-    "cf-export": "contentful space export --config contentful/export-config.json --management-token $CONTENTFUL_ACCESS_TOKEN --space-id $CONTENTFUL_SPACE_ID",
-    "cf-generate-types": "cf-content-types-generator contentful/export.json --out types/contentful"
+    "typecheck": "tsc --noEmit",
+    "cf-export": "contentful space export --config contentful/export-config.json --management-token $CONTENTFUL_MANAGEMENT_TOKEN --space-id $CONTENTFUL_SPACE_ID"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.4.0",
-    "@contentful/rich-text-types": "^15.4.0",
-    "@headlessui/react": "^1.7.3",
-    "@vercel/analytics": "^0.1.6",
-    "@vercel/edge": "^0.1.2",
-    "@vercel/og": "^0.0.21",
-    "classnames": "2.3.1",
-    "date-fns": "2.28.0",
-    "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "yet-another-react-lightbox": "^2.2.2"
+    "@contentful/rich-text-react-renderer": "^16.2.2",
+    "@contentful/rich-text-types": "^17.0.0",
+    "@vercel/analytics": "^1.5.0",
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1",
+    "yet-another-react-lightbox": "^3.33.0"
   },
   "devDependencies": {
-    "@types/node": "^20.8.10",
-    "@types/react": "^18.2.33",
-    "autoprefixer": "10.4.2",
-    "cf-content-types-generator": "^2.12.9",
-    "contentful-cli": "^3.1.7",
-    "contentful-import": "^7.8.7",
-    "postcss": "8.4.5",
-    "tailwindcss": "^3.0.15",
-    "typescript": "^5.2.2"
+    "@tailwindcss/postcss": "^4.3.4",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4.3.4",
+    "typescript": "^5.8.0"
   }
 }
